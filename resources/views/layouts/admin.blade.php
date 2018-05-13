@@ -111,13 +111,13 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="{{route('admin')}}">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="{{route('sekolah')}}">
                           <i class="material-icons">
                             school
                         </i>
@@ -125,7 +125,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="pages/helper-classes.html">
+                    <a href="{{route('guru')}}">
                       <i class="material-icons">
                         person
                     </i>
@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li>
-                <a href="pages/helper-classes.html">
+                <a href="{{route('siswa')}}">
                     <i class="material-icons">
                         people
                     </i>
@@ -141,7 +141,7 @@
                 </a>
             </li>
             <li>
-                <a href="pages/helper-classes.html">
+                <a href="{{route('provinsi')}}">
                     <i class="material-icons col-green">
                         location_city
                     </i>
@@ -149,7 +149,7 @@
                 </a>
             </li>
             <li>
-                <a href="pages/helper-classes.html">
+                <a href="{{route('kabupaten')}}">
                   <i class="material-icons col-amber">
                     location_city
                 </i>
@@ -157,7 +157,7 @@
             </a>
         </li>
         <li>
-            <a href="pages/helper-classes.html">
+            <a href="{{route('kecamatan')}}">
               <i class="material-icons col-light-blue">
                 location_city
             </i>
@@ -165,7 +165,7 @@
         </a>
     </li>
     <li>
-        <a href="pages/helper-classes.html">
+        <a href="{{route('desa')}}">
           <i class="material-icons">
             location_city
         </i>
@@ -173,7 +173,7 @@
     </a>
 </li>
 <li>
-    <a href="pages/helper-classes.html">
+    <a href="{{route('kurikulum')}}">
        <i class="material-icons">
         book
     </i>
@@ -181,7 +181,7 @@
 </a>
 </li>
 <li>
-    <a href="pages/helper-classes.html">
+    <a href="{{route('jurusan')}}">
        <i class="material-icons">
         next_week
     </i>
@@ -189,7 +189,7 @@
 </a>
 </li>
 <li>
-    <a href="pages/helper-classes.html">
+    <a href="{{route('galeri')}}">
      <i class="material-icons">
         collections
     </i>
@@ -197,7 +197,7 @@
 </a>
 </li>
 <li>
-    <a href="pages/helper-classes.html">
+    <a href="{{route('prestasi')}}">
         <i class="material-icons">
             brightness_high
         </i>
@@ -205,7 +205,7 @@
     </a>
 </li>
 <li>
-    <a href="pages/helper-classes.html">
+    <a href="{{route('eskul')}}">
      <i class="material-icons">
         directions_walk
     </i>
@@ -213,7 +213,7 @@
 </a>
 </li>
 <li>
-    <a href="pages/helper-classes.html">
+    <a href="{{route('fasilitas')}}">
        <i class="material-icons">
         waves
     </i>

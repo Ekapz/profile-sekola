@@ -46,9 +46,9 @@ class HomeController extends Controller
         return view('admin.kecamatan');
     }
 
-    public function daerah()
+    public function desa()
     {
-        return view('admin.daerah');
+        return view('admin.desa');
     }
 
     public function sekolah()
@@ -61,9 +61,9 @@ class HomeController extends Controller
         return view('admin.guru');
     }
 
-    public function murid()
+    public function siswa()
     {
-        return view('admin.murid');
+        return view('admin.siswa');
     }
 
     public function kurikulum()
