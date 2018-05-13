@@ -15,6 +15,8 @@ class CreateKurikulumsTable extends Migration
     {
         Schema::create('kurikulums', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('kurikulum')->unique();
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

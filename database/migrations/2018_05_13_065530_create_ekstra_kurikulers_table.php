@@ -15,6 +15,10 @@ class CreateEkstraKurikulersTable extends Migration
     {
         Schema::create('ekstra_kurikulers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('jenis');
+            $table->string('nama');
+            $table->unsignedInteger('sekolah_id');
+            $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

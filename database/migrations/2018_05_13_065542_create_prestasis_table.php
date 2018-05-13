@@ -15,6 +15,12 @@ class CreatePrestasisTable extends Migration
     {
         Schema::create('prestasis', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nama');
+            $table->string('jenis_prestasi');
+            $table->string('tingkat');
+            $table->text('keterangan');            
+            $table->unsignedInteger('sekolah_id');
+            $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

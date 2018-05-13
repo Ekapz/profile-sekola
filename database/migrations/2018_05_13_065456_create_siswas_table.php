@@ -15,6 +15,17 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('nisn')->unique();
+            $table->integer('nis')->unique();
+            $table->string('nama');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->text('alamat');
+            $table->integer('no_telp')->unique();
+            $table->string('email');
+            $table->unsignedInteger('jurusan_id');
+            $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

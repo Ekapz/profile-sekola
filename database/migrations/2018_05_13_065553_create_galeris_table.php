@@ -15,6 +15,11 @@ class CreateGalerisTable extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('judul');
+            $table->text('deskripsi');
+            $table->string('image');
+            $table->unsignedInteger('sekolah_id');
+            $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

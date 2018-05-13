@@ -15,6 +15,13 @@ class CreateJurusansTable extends Migration
     {
         Schema::create('jurusans', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('jurusan');
+            $table->text('keterangan');
+            $table->year('tahun');
+            $table->string('kurikulum');
+            $table->foreign('kurikulum')->references('kurikulum')->on('kurikulums')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('sekolah_id');
+            $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
