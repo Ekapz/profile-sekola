@@ -26,19 +26,19 @@
     <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="{{asset('plugins/morrisjs/morris.css')}}" rel="stylesheet" />
+    <link href="{{asset('plugins/morrisjs/morris.css')}}" rel="stylesheet" />    
 
-    <!-- Select2 Css-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" />
+    <!-- JQuery DataTable Css -->
+    <link href="{{asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
 
     <!-- Custom Css -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-
-    @yield('head-content')
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">    
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('css/themes/all-themes.css')}}" rel="stylesheet" />
+
+    @yield('head-content')
+
     <style type="text/css" media="screen">
     .sidebar .user-info {    
         background: url("{{asset('img/user-img-background.jpg')}}") no-repeat no-repeat;
@@ -88,11 +88,11 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{asset('img/user.png')}}" width="48" height="48" alt="User" />
+                    <!-- <img src="{{asset('img/user.png')}}" width="48" height="48" alt="User" /> -->
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</div>
+                    <div class="email">{{ Auth::user()->email }}</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -124,73 +124,73 @@
                             <span>Sekolah</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'guru' ? 'active' : null }}">
                         <a href="{{route('guru')}}"><i class="material-icons">person</i>
                             <span>Guru</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'siswa' ? 'active' : null }}">
                         <a href="{{route('siswa')}}">
                             <i class="material-icons">people</i>
                             <span>Siswa</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'provinsi' ? 'active' : null }}">
                         <a href="{{route('provinsi')}}">
                             <i class="material-icons col-green">location_city</i>
                             <span>Provinsi</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{route('kabupaten')}}">\
+                    <li class="{{ Request::segment(1) === 'kabupaten' ? 'active' : null }}">
+                        <a href="{{route('kabupaten')}}">
                             <i class="material-icons col-amber">
                             location_city</i>
                             <span>Kabupaten</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'kecamatan' ? 'active' : null }}">
                         <a href="{{route('kecamatan')}}">
                             <i class="material-icons col-light-blue">location_city</i>
                             <span>Kecamatan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'desa' ? 'active' : null }}">
                         <a href="{{route('desa')}}">
                             <i class="material-icons">location_city</i>
                             <span>Desa</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'kurikulum' ? 'active' : null }}">
                         <a href="{{route('kurikulum')}}">
                             <i class="material-icons">book</i>
                             <span>Kurikulum</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'jurusan' ? 'active' : null }}">
                         <a href="{{route('jurusan')}}">
                             <i class="material-icons">next_week</i>
                             <span>Jurusan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'galeri' ? 'active' : null }}">
                         <a href="{{route('galeri')}}">
                             <i class="material-icons">collections</i>
                             <span>Galeri</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'prestasi' ? 'active' : null }}">
                         <a href="{{route('prestasi')}}">
                             <i class="material-icons">brightness_high</i>
                             <span>Prestasi</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'eskul' ? 'active' : null }}">
                         <a href="{{route('eskul')}}">
                             <i class="material-icons">directions_walk</i>
                             <span>Eskul</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'fasilitas' ? 'active' : null }}">
                         <a href="{{route('fasilitas')}}">
                             <i class="material-icons">waves</i>
                             <span>Fasilitas</span>
@@ -202,7 +202,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2018 - 2019 <a href="javascript:void(0);">Admin - SMKN 10 JAKARTA</a>.
+                    &copy; 2018{{ date('Y') === '2018' ? null : ' - '.date('Y') }} <a>Admin - SMKN 10 JAKARTA</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> Beta
@@ -254,19 +254,26 @@
 <!-- Sparkline Chart Plugin Js -->
 <script src="{{('plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
+<!-- Jquery DataTable Plugin Js -->
+<script src="{{('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
+<script src="{{('plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+
 <!-- Custom Js -->
 <script src="{{asset('js/admin.js')}}"></script>
+<script src="{{asset('js/pages/tables/jquery-datatable.js')}}"></script>
 <script src="{{asset('js/pages/index.js')}}"></script>
 
 <!-- Demo Js -->
 <script src="{{asset('js/demo.js')}}"></script>
 
-<!-- Select2 Js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
 <script type="text/javascript">
     @yield('foot-content')
-    $.fn.select2.defaults.set( "theme", "bootstrap" );
-    $( "select" ).select2();    
 </script>
 </html>
