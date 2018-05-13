@@ -21,11 +21,11 @@
             <textarea class="form-control" id="message-text"></textarea>
           </div>
           <div class="form-group">
-            <label for="message-text" class="control-label">Message:</label>
-            <select class="form-control">
-              <option>Laki-Laki</option>  
-              <option>Perempuan</option>  
-              <option>Waria</option>  
+            <label for="message-text" class="control-label">Select:</label>
+            <select>
+              <option>Laki-Laki</option>
+              <option>Perempuan</option>
+              <option>Waria</option>
               <option>Lainnya</option>
             </select>
           </div>
