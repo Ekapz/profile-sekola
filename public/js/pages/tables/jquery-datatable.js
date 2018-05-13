@@ -9,19 +9,19 @@ $(document).ready(function() {
             "infoPostFix":    "",
             "thousands":      ",",
             "lengthMenu":     "Tampilkan _MENU_ entri",
-            "loadingRecords": "Loading...",
+            "loadingRecords": "Sedang memuat...",
             "processing":     "Sedang memproses...",
             "search":         "Cari:",
-            "zeroRecords":    "Tidak ditemukan data yang sesuai",
+            "zeroRecords":    "Tidak ditemukan data yang sesuai dengan pencarian",
             "paginate": {
-                "first":      "Pertama",
-                "last":       "Terakhir",
-                "next":       "Selanjutnya",
+                "first":      "Awalan",
+                "last":       "Akhiran",
+                "next":       "Berikutnya",
                 "previous":   "Sebelumnya"
             },
             "aria": {
-                "sortAscending":  ": aktifkan untuk mengurutkan kolom ascending",
-                "sortDescending": ": aktifkan untuk mengurutkan kolom descending"
+                "sortAscending":  ": aktifkan untuk mengurutkan kolom dari terkecil",
+                "sortDescending": ": aktifkan untuk mengurutkan kolom dari terbesar"
             }
         },     
         lengthChange: true,
