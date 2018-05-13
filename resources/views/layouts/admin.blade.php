@@ -96,11 +96,13 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();" ><i class="material-icons">input</i>Sign Out</a></li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                            <li>
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();" ><i class="material-icons">input</i>Sign Out</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>                            
                         </ul>
                     </div>
                 </div>
@@ -110,136 +112,111 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
+                    <li class="{{ Request::segment(1) === 'admin' ? 'active' : null }}">
                         <a href="{{route('admin')}}">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Request::segment(1) === 'sekolah' ? 'active' : null }}">
                         <a href="{{route('sekolah')}}">
-                          <i class="material-icons">
-                            school
-                        </i>
-                        <span>Sekolah</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('guru')}}">
-                      <i class="material-icons">
-                        person
-                    </i>
-                    <span>Guru</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('siswa')}}">
-                    <i class="material-icons">
-                        people
-                    </i>
-                    <span>Murid</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('provinsi')}}">
-                    <i class="material-icons col-green">
-                        location_city
-                    </i>
-                    <span>Provinsi</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('kabupaten')}}">
-                  <i class="material-icons col-amber">
-                    location_city
-                </i>
-                <span>Kabupaten</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('kecamatan')}}">
-              <i class="material-icons col-light-blue">
-                location_city
-            </i>
-            <span>Kecamatan</span>
-        </a>
-    </li>
-    <li>
-        <a href="{{route('desa')}}">
-          <i class="material-icons">
-            location_city
-        </i>
-        <span>Desa</span>
-    </a>
-</li>
-<li>
-    <a href="{{route('kurikulum')}}">
-       <i class="material-icons">
-        book
-    </i>
-    <span>Kurikulum</span>
-</a>
-</li>
-<li>
-    <a href="{{route('jurusan')}}">
-       <i class="material-icons">
-        next_week
-    </i>
-    <span>Jurusan</span>
-</a>
-</li>
-<li>
-    <a href="{{route('galeri')}}">
-     <i class="material-icons">
-        collections
-    </i>
-    <span>Galeri</span>
-</a>
-</li>
-<li>
-    <a href="{{route('prestasi')}}">
-        <i class="material-icons">
-            brightness_high
-        </i>
-        <span>Prestasi</span>
-    </a>
-</li>
-<li>
-    <a href="{{route('eskul')}}">
-     <i class="material-icons">
-        directions_walk
-    </i>
-    <span>Eskul</span>
-</a>
-</li>
-<li>
-    <a href="{{route('fasilitas')}}">
-       <i class="material-icons">
-        waves
-    </i>
-    <span>Fasilitas</span>
-</a>
-</li>
-</ul>
-</div>
-<!-- #Menu -->
-<!-- Footer -->
-<div class="legal">
-    <div class="copyright">
-        &copy; 2018 - 2019 <a href="javascript:void(0);">Admin - SMKN 10 JAKARTA</a>.
-    </div>
-    <div class="version">
-        <b>Version: </b> Beta
-    </div>
-</div>
-<!-- #Footer -->
-</aside>
-<!-- #END# Left Sidebar -->
-</section>
+                            <i class="material-icons">school</i>
+                            <span>Sekolah</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('guru')}}"><i class="material-icons">person</i>
+                            <span>Guru</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('siswa')}}">
+                            <i class="material-icons">people</i>
+                            <span>Siswa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('provinsi')}}">
+                            <i class="material-icons col-green">location_city</i>
+                            <span>Provinsi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('kabupaten')}}">\
+                            <i class="material-icons col-amber">
+                            location_city</i>
+                            <span>Kabupaten</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('kecamatan')}}">
+                            <i class="material-icons col-light-blue">location_city</i>
+                            <span>Kecamatan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('desa')}}">
+                            <i class="material-icons">location_city</i>
+                            <span>Desa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('kurikulum')}}">
+                            <i class="material-icons">book</i>
+                            <span>Kurikulum</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('jurusan')}}">
+                            <i class="material-icons">next_week</i>
+                            <span>Jurusan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('galeri')}}">
+                            <i class="material-icons">collections</i>
+                            <span>Galeri</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('prestasi')}}">
+                            <i class="material-icons">brightness_high</i>
+                            <span>Prestasi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('eskul')}}">
+                            <i class="material-icons">directions_walk</i>
+                            <span>Eskul</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('fasilitas')}}">
+                            <i class="material-icons">waves</i>
+                            <span>Fasilitas</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2018 - 2019 <a href="javascript:void(0);">Admin - SMKN 10 JAKARTA</a>.
+                </div>
+                <div class="version">
+                    <b>Version: </b> Beta
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
 
-<section class="content">
-    <div class="container-fluid">
-        @yield('content')
+    <section class="content">
+        <div class="container-fluid">
+            @yield('content')
+        </div>
     </section>
 </body>
 <!-- Jquery Core Js -->
