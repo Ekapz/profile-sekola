@@ -28,6 +28,10 @@
     <!-- Morris Chart Css-->
     <link href="{{asset('plugins/morrisjs/morris.css')}}" rel="stylesheet" />
 
+    <!-- Select2 Css-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" />
+
     <!-- Custom Css -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
@@ -36,10 +40,10 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('css/themes/all-themes.css')}}" rel="stylesheet" />
     <style type="text/css" media="screen">
-        .sidebar .user-info {    
-            background: url("{{asset('img/user-img-background.jpg')}}") no-repeat no-repeat;
-        }
-    </style>
+    .sidebar .user-info {    
+        background: url("{{asset('img/user-img-background.jpg')}}") no-repeat no-repeat;
+    }
+</style>
 </head>
 
 <body class="theme-red">
@@ -93,51 +97,51 @@
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();" ><i class="material-icons">input</i>Sign Out</a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </ul>
-                        </div>
+                            document.getElementById('logout-form').submit();" ><i class="material-icons">input</i>Sign Out</a></li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </ul>
                     </div>
                 </div>
-                <!-- #User Info -->
-                <!-- Menu -->
-                <div class="menu">
-                    <ul class="list">
-                        <li class="header">MAIN NAVIGATION</li>
-                        <li class="active">
-                            <a href="index.html">
-                                <i class="material-icons">home</i>
-                                <span>Home</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="pages/typography.html">
-                              <i class="material-icons">
-                                school
-                            </i>
-                            <span>Sekolah</span>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/helper-classes.html">
+                        <a href="pages/typography.html">
                           <i class="material-icons">
-                            person
+                            school
                         </i>
-                        <span>Guru</span>
+                        <span>Sekolah</span>
                     </a>
                 </li>
                 <li>
                     <a href="pages/helper-classes.html">
-                        <i class="material-icons">
-                            people
-                        </i>
-                        <span>Murid</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/helper-classes.html">
+                      <i class="material-icons">
+                        person
+                    </i>
+                    <span>Guru</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/helper-classes.html">
+                    <i class="material-icons">
+                        people
+                    </i>
+                    <span>Murid</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/helper-classes.html">
                     <i class="material-icons col-green">
                         location_city
                     </i>
@@ -239,47 +243,53 @@
     </section>
 </body>
 <!-- Jquery Core Js -->
-    <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
+<!-- Bootstrap Core Js -->
+<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
 
-    <!-- Select Plugin Js -->
-    <script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
+<!-- Select Plugin Js -->
+<script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
 
-    <!-- Slimscroll Plugin Js -->
-    <script src="{{asset('plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="{{asset('plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
 
-    <!-- Waves Effect Plugin Js -->
-    <script src="{{asset('plugins/node-waves/waves.js')}}"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="{{asset('plugins/node-waves/waves.js')}}"></script>
 
-    <!-- Jquery CountTo Plugin Js -->
-    <script src="{{asset('plugins/jquery-countto/jquery.countTo.js')}}"></script>
+<!-- Jquery CountTo Plugin Js -->
+<script src="{{asset('plugins/jquery-countto/jquery.countTo.js')}}"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="{{asset('plugins/raphael/raphael.min.js')}}"></script>
-    <script src="{{asset('plugins/morrisjs/morris.js')}}"></script>
+<!-- Morris Plugin Js -->
+<script src="{{asset('plugins/raphael/raphael.min.js')}}"></script>
+<script src="{{asset('plugins/morrisjs/morris.js')}}"></script>
 
-    <!-- ChartJs -->
-    <script src="{{asset('plugins/chartjs/Chart.bundle.js')}}"></script>
+<!-- ChartJs -->
+<script src="{{asset('plugins/chartjs/Chart.bundle.js')}}"></script>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="{{asset('plugins/flot-charts/jquery.flot.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.resize.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-    <script src="{{asset('plugins/flot-charts/jquery.flot.time.js')}}"></script>
+<!-- Flot Charts Plugin Js -->
+<script src="{{asset('plugins/flot-charts/jquery.flot.js')}}"></script>
+<script src="{{asset('plugins/flot-charts/jquery.flot.resize.js')}}"></script>
+<script src="{{asset('plugins/flot-charts/jquery.flot.pie.js')}}"></script>
+<script src="{{asset('plugins/flot-charts/jquery.flot.categories.js')}}"></script>
+<script src="{{asset('plugins/flot-charts/jquery.flot.time.js')}}"></script>
 
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="{{('plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
+<!-- Sparkline Chart Plugin Js -->
+<script src="{{('plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
-    <!-- Custom Js -->
-    <script src="{{asset('js/admin.js')}}"></script>
-    <script src="{{asset('js/pages/index.js')}}"></script>
+<!-- Custom Js -->
+<script src="{{asset('js/admin.js')}}"></script>
+<script src="{{asset('js/pages/index.js')}}"></script>
 
-    <!-- Demo Js -->
-    <script src="{{asset('js/demo.js')}}"></script>
-    <script type="text/javascript">
+<!-- Demo Js -->
+<script src="{{asset('js/demo.js')}}"></script>
+
+<!-- Select2 Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script type="text/javascript">
     @yield('foot-content')
-    </script>
+    $.fn.select2.defaults.set( "theme", "bootstrap" );
+    $( "select" ).select2();    
+</script>
 </html>
