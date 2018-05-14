@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Desa;//manggil model desa
 
 class AdminController extends Controller
 {
@@ -39,7 +40,8 @@ class AdminController extends Controller
 
     public function desa()
     {
-        return view('admin.desa');
+        $data['pedesaan'] = Desa::all();//pedesaan adalah variable yang akan dipanggil diviewnya
+        return view('admin.desa')->with($data);
     }
 
     public function sekolah()
