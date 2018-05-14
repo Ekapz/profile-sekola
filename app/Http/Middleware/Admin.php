@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Auth;
+use Closure;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Contracts\Auth\Factory as Admin;
+use Illuminate\Contracts\Auth\Factory as Authentication;
 
 class Admin
 {
@@ -14,7 +14,7 @@ class Admin
      *
      * @var \Illuminate\Contracts\Auth\Factory
      */
-    protected $admin
+    protected $auth;
 
     /**
      * Create a new middleware instance.
@@ -22,15 +22,25 @@ class Admin
      * @param  \Illuminate\Contracts\Auth\Factory  $auth
      * @return void
      */
-    public function __construct(Auth $admin)
+    public function __construct(Authentication $auth)
     {
-        $this->auth = $admin;
+        $this->auth = $auth;
     }
 
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string[]  ...$guards
+     * @return mixed
+     *
+     * @throws \Illuminate\Auth\AuthenticationException
+     */
     public function handle($request, Closure $next, ...$guards)
     {
         $this->authenticate($guards);
-        if (Auth::user()->role_id==1) {
+        if (Auth::user() &&  Auth::user()->status == 3) {
             return $next($request);
         }
         return back();
@@ -49,13 +59,12 @@ class Admin
         if (empty($guards)) {
             return $this->auth->authenticate();
         }
-
         foreach ($guards as $guard) {
             if ($this->auth->guard($guard)->check()) {
                 return $this->auth->shouldUse($guard);
             }
         }
-
+        
         throw new AuthenticationException('Unauthenticated.', $guards);
     }
 }
