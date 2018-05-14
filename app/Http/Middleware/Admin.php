@@ -40,7 +40,7 @@ class Admin
     public function handle($request, Closure $next, ...$guards)
     {
         $this->authenticate($guards);
-        if (Auth::user() &&  Auth::user()->status == 3) {
+        if (Auth::user() &&  Auth::user()->role_id == 2) {
             return $next($request);
         }
         return back();
