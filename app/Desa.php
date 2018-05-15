@@ -9,5 +9,6 @@ class Desa extends Model
     public function kecamatan()
     {
         return $this->belongsTo(Kecamatan::class);
+        //kalau di view berarti {{ $desa->kecamatan }}
     }
 }

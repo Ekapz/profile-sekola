@@ -22,6 +22,9 @@
     <!-- MaterializeCss -->
     <!-- <link href="{{asset('plugins/materialize-css/css/materialize.css')}}" rel="stylesheet" /> -->
 
+    <!-- Bootstrap Select Css -->
+    <link href="{{asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
+
     <!-- Animation Css -->
     <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
 
@@ -265,9 +268,13 @@
 <script src="{{('plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
 <script src="{{('plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
 
+<!-- Bootstrap Notify Plugin Js -->
+<script src="{{('plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
+
 <!-- Custom Js -->
 <script src="{{asset('js/admin.js')}}"></script>
 <script src="{{asset('js/pages/tables/jquery-datatable.js')}}"></script>
+<script src="{{asset('js/pages/ui/notifications.js')}}"></script>
 <script src="{{asset('js/pages/index.js')}}"></script>
 
 <!-- Demo Js -->
