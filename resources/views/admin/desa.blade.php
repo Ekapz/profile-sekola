@@ -46,7 +46,7 @@
                 <?php
                 $kecamatan = \App\Kecamatan::where('id', '=', $desa->kecamatan_id)->value('kecamatan')
                 ?>
-                <td>{{ $kecamatan }}</td>
+                <td>{{ $desa->kecamatan->kecamatan }}</td>
               </tr>
               @endforeach
             </tbody>
