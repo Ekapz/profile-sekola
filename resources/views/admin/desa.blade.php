@@ -15,7 +15,7 @@
     <div class="card">
       <div class="header">
         <h2>
-          EXPORTABLE TABLE
+          Data Desa
         </h2>
         <ul class="header-dropdown m-r--5">
           <li class="dropdown">

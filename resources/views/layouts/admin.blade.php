@@ -115,85 +115,85 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="{{ Request::segment(1) === 'admin' ? 'active' : null }}">
+                    <li class="{{ Request::segment(1) === 'admin' && Request::segment(2) === null ? 'active' : null }}">
                         <a href="{{route('admin')}}">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'sekolah' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'sekolah' ? 'active' : null }}">
                         <a href="{{route('sekolah')}}">
                             <i class="material-icons">school</i>
                             <span>Sekolah</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'guru' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'guru' ? 'active' : null }}">
                         <a href="{{route('guru')}}"><i class="material-icons">person</i>
                             <span>Guru</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'siswa' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'siswa' ? 'active' : null }}">
                         <a href="{{route('siswa')}}">
                             <i class="material-icons">people</i>
                             <span>Siswa</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'provinsi' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'provinsi' ? 'active' : null }}">
                         <a href="{{route('provinsi')}}">
                             <i class="material-icons col-green">location_city</i>
                             <span>Provinsi</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'kabupaten' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'kabupaten' ? 'active' : null }}">
                         <a href="{{route('kabupaten')}}">
                             <i class="material-icons col-amber">
                             location_city</i>
                             <span>Kabupaten</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'kecamatan' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'kecamatan' ? 'active' : null }}">
                         <a href="{{route('kecamatan')}}">
                             <i class="material-icons col-light-blue">location_city</i>
                             <span>Kecamatan</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'desa' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'desa' ? 'active' : null }}">
                         <a href="{{route('desa')}}">
                             <i class="material-icons">location_city</i>
                             <span>Desa</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'kurikulum' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'kurikulum' ? 'active' : null }}">
                         <a href="{{route('kurikulum')}}">
                             <i class="material-icons">book</i>
                             <span>Kurikulum</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'jurusan' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'jurusan' ? 'active' : null }}">
                         <a href="{{route('jurusan')}}">
                             <i class="material-icons">next_week</i>
                             <span>Jurusan</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'galeri' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'galeri' ? 'active' : null }}">
                         <a href="{{route('galeri')}}">
                             <i class="material-icons">collections</i>
                             <span>Galeri</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'prestasi' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'prestasi' ? 'active' : null }}">
                         <a href="{{route('prestasi')}}">
                             <i class="material-icons">brightness_high</i>
                             <span>Prestasi</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'eskul' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'eskul' ? 'active' : null }}">
                         <a href="{{route('eskul')}}">
                             <i class="material-icons">directions_walk</i>
                             <span>Eskul</span>
                         </a>
                     </li>
-                    <li class="{{ Request::segment(1) === 'fasilitas' ? 'active' : null }}">
+                    <li class="{{ Request::segment(2) === 'fasilitas' ? 'active' : null }}">
                         <a href="{{route('fasilitas')}}">
                             <i class="material-icons">waves</i>
                             <span>Fasilitas</span>
@@ -255,21 +255,21 @@
 <script src="{{asset('plugins/flot-charts/jquery.flot.time.js')}}"></script>
 
 <!-- Sparkline Chart Plugin Js -->
-<script src="{{('plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
+<script src="{{asset('plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
 <!-- Jquery DataTable Plugin Js -->
-<script src="{{('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
-<script src="{{('plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
 
 <!-- Bootstrap Notify Plugin Js -->
-<script src="{{('plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
+<script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
 
 <!-- Custom Js -->
 <script src="{{asset('js/admin.js')}}"></script>
