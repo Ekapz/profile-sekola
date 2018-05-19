@@ -54,6 +54,13 @@ Route::prefix('admin')->group(function () {
 		Route::post('delete-provinsi', 'Auth\provinsiController@deleteprovinsi')->name('deleteProvinsi');
 	});
 
+	Route::prefix('sekolah')->group(function () {	
+		Route::post('add-sekolah', 'Auth\SekolahController@addSekolah')->name('addSekolah');
+		Route::post('edit-sekolah', 'Auth\SekolahController@editSekolah')->name('editSekolah');
+		Route::post('delete-sekolah', 'Auth\SekolahController@deleteSekolah')->name('deleteSekolah');
+	});
+
+
 
 	Route::get('sekolah', 'Auth\SekolahController@sekolah')->name('sekolah');
 	Route::get('guru', 'Auth\AdminController@guru')->name('guru');

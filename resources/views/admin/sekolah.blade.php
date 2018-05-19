@@ -83,7 +83,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="defaultModalLabel">Tambah Sekolah</h4>
       </div>
-      <form method="post">
+      <form method="post" action="{{route('addSekolah')}}">
         <div class="modal-body">
           <div class="row clearfix">
             <div class="col-sm-12">
@@ -186,37 +186,43 @@
 </div>
 
 @foreach($sekolah as $r)
-<div class="modal fade" id="{{ $desa->id }}editModal" role="dialog">
+<div class="modal fade" id="{{ $r->id }}editModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="defaultModalLabel">Edit Desa</h4>
+        <h4 class="modal-title" id="defaultModalLabel">Edit Sekolah</h4>
       </div>
-      <form method="post" action="{{ route('editDesa') }}">
+      <form method="post" action="{{ route('editSekolah') }}">
         <div class="modal-body">
           <div class="row clearfix">
             <div class="col-sm-12">
               {{ csrf_field() }}
-              <input type="hidden" name="id" value="{{ $desa->id }}">
+              <input type="hidden" name="id" value="{{ $r->id }}">
               <div class="form-group">
-                <label class="form-label">Kode</label>
+                <label class="form-label">Nss</label>
                 <div class="form-line">
-                  <input type="number" class="form-control" name="kode" value="{{ $desa->kode }}" required autofocus />
+                  <input type="number" class="form-control" name="Nss" value="{{ $r->kode }}" required autofocus />
                 </div>
               </div>
               <div class="form-group"> 
-                <label class="form-label">Desa</label>
+                <label class="form-label">Nama Sekolah</label>
                 <div class="form-line">
-                  <input type="text" class="form-control" name="desa" value="{{ $desa->desa }}" required />
+                  <input type="text" class="form-control" name="desa" value="{{ $r->nama }}" required />
+                </div>
+              </div>
+              <div class="form-group"> 
+                <label class="form-label">Nama Sekolah</label>
+                <div class="form-line">
+                  <input type="text" class="form-control" name="desa" value="{{ $r->alamat }}" required />
                 </div>
               </div>
               <div class="form-group">
                 <p>
-                  <b>Kecamatan</b>
+                  <b>Desa</b>
                 </p>
                 <select class="form-control show-tick" data-live-search="true" name="kecamatan_id" required>
-                  @foreach($semuakecamatan as $kecamatan)
-                  <option value="{{ $kecamatan->id }}" {{ $desa->kecamatan->kecamatan == $kecamatan->kecamatan ? 'selected' : null }}>{{ $kecamatan->kecamatan }}</option>
+                  @foreach($semuadesa as $desa)
+                  <option value="{{ $r->id }}" {{ $r->desa->desa == $r->desa ? 'selected' : null }}>{{ $r->desa }}</option>
                   @endforeach
                 </select>
               </div>
@@ -234,18 +240,18 @@
 @endforeach
 
 @foreach($sekolah as $r)
-<div class="modal fade" id="{{ $desa->id }}deleteModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="{{ $r->id }}deleteModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="smallModalLabel">Hapus Desa</h4>
+        <h4 class="modal-title" id="smallModalLabel">Hapus Sekolah</h4>
       </div>
       <div class="modal-body">
-        Yakin ingin menghapus desa {{ $desa->desa }}?
+        Yakin ingin menghapus desa {{ $r->sekolah }}?
       </div>
-      <form method="post" action="{{ route('deleteDesa') }}">
+      <form method="post" action="{{ route('deleteSekolah') }}">
         {{ csrf_field() }}
-        <input type="hidden" name="id" value="{{ $desa->id }}">
+        <input type="hidden" name="id" value="{{ $r->id }}">
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger waves-effect">Hapus</button>
           <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">Keluar</button>
