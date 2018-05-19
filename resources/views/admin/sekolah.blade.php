@@ -83,7 +83,7 @@
       <div class="modal-header">
         <h4 class="modal-title" id="defaultModalLabel">Tambah Sekolah</h4>
       </div>
-      <form method="post" action="{{route('addSekolah')}}">
+      <form method="post" action="{{route('addSekolah')}}" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="row clearfix">
             <div class="col-sm-12">
@@ -158,17 +158,14 @@
                   <input type="text" class="form-control" name="kepala_sekolah" required />
                 </div>
               </div>
-              <div class="form-group">                 
-                <form action="/" id="frmFileUpload" class="dropzone dz-clickable" method="post" enctype="multipart/form-data">
-                                <div class="dz-message">
-                                    <div class="drag-icon-cph">
-                                        <i class="material-icons">touch_app</i>
-                                    </div>
-                                    <h3>Drop files here or click to upload.</h3>
-                                    <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em>
-                                </div>
-                                
-                            </form>
+              <div class="form-group">
+                <div class="dz-message">
+                  <div class="drag-icon-cph">
+                    <i class="material-icons">touch_app</i>
+                  </div>
+                  <h3>Drop files here or click to upload.</h3>
+                  <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em>
+                </div>                
                 <div class="fallback">
                   <input name="file" type="file" multiple />
                 </div>
@@ -222,7 +219,7 @@
                 </p>
                 <select class="form-control show-tick" data-live-search="true" name="kecamatan_id" required>
                   @foreach($semuadesa as $desa)
-                  <option value="{{ $r->id }}" {{ $r->desa->desa == $r->desa ? 'selected' : null }}>{{ $r->desa }}</option>
+                  <option value="{{ $desa->id }}" {{ $r->desa->desa == $desa->desa ? 'selected' : null }}>{{ $desa->desa }}</option>
                   @endforeach
                 </select>
               </div>
