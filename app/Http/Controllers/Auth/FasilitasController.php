@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Sekolah;
+use Session;
 use Fasilitas;
 
 class FasilitasController extends Controller
@@ -20,41 +21,43 @@ class FasilitasController extends Controller
      	$this->middleware('admin');
      }
 
-     public function kabupaten()
+     public function fasilitas()
      {
 
-     	$data['semuaprovinsi'] = Provinsi::all();
-        $data['kabupaten'] = Kabupaten::all();//pedesaan adalah variable yang akan dipanggil diviewnya
-        return view('admin.kabupaten')->with($data);
+     	$data['sekolahan'] = Sekolah::all();
+        $data['fasilitas'] = Fasilitas::all();//pedesaan adalah variable yang akan dipanggil diviewnya
+        return view('admin.fasilitas')->with($data);
     }
 
-    public function addKabupaten(Request $request)
+    public function addFasilitas(Request $request)
     {
-        $table = new Kabupaten;//daftarin table desa dengan variable modle
-        $table->kode = $request->input('kode');//inputan table
-        $table->kabupaten = $request->input('kabupaten');//inputan table
-        $table->provinsi_id = $request->input('provinsi_id');//inputan table
+        $table = new Fasilitas;//daftarin table desa dengan variable modle
+        $table->nama = $request->input('nama');//inputan table
+        $table->jenis = $request->input('jenis');//inputan table
+        $table->keterangan = $request->input('keterangan');//inputan table
+        $table->sekolah_id = $request->input('sekolah_id');//inputan table
         $table->save();//eksekusi data
-        Session::flash('message', "Kabupaten berhasil ditambahkan.");//session buat alert
+        Session::flash('message', "Fasilitas berhasil ditambahkan.");//session buat alert
         return back();
     }
 
-    public function editKabupaten(Request $request)
+    public function editFasilitas(Request $request)
     {
-        $table = Kabupaten::find($request->input('id'));//manggil desa sesuai id
-        $table->kode = $request->input('kode');//merubah isian tabel
-        $table->kabupaten = $request->input('kabupaten');//inputan table
-        $table->provinsi_id = $request->input('provinsi_id');//inputan table
+        $table = Fasilitas::find($request->input('id'));//manggil desa sesuai id
+        $table->nama = $request->input('nama');//merubah isian tabel
+        $table->jenis = $request->input('jenis');//inputan table
+        $table->keterangan = $request->input('keterangan');//inputan table
+        $table->sekolah_id = $request->input('sekolah_id');//inputan table
         $table->save();
-        Session::flash('message', "Kecamatan berhasil diedit.");
+        Session::flash('message', "Fasilitas berhasil diedit.");
         return back();
     }
 
-    public function deleteKabupaten(Request $request)
+    public function deleteFasilitas(Request $request)
     {
-    	$table = Kabupaten::find($request->input('id'));        
+    	$table = Fasilitas::find($request->input('id'));        
         $table->delete();//delete table
-        Session::flash('message', "Kabupaten berhasil dihapus.");
+        Session::flash('message', "Fasilitas berhasil dihapus.");
         return back();
     }
 

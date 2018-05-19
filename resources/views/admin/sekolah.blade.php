@@ -167,7 +167,7 @@
                   <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em>
                 </div>                
                 <div class="fallback">
-                  <input name="file" type="file" multiple />
+                  <input name="image" type="file" multiple />
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@
               <div class="form-group">
                 <label class="form-label">Nss</label>
                 <div class="form-line">
-                  <input type="number" class="form-control" name="Nss" value="{{ $r->kode }}" required autofocus />
+                  <input type="number" class="form-control" name="Nss" value="{{ $r->nss }}" required autofocus />
                 </div>
               </div>
               <div class="form-group"> 
@@ -208,9 +208,27 @@
                 </div>
               </div>
               <div class="form-group"> 
-                <label class="form-label">Nama Sekolah</label>
+                <label class="form-label">Alamat</label>
                 <div class="form-line">
-                  <input type="text" class="form-control" name="desa" value="{{ $r->alamat }}" required />
+                  <input type="text" class="form-control" name="alamat" value="{{ $r->alamat }}" required />
+                </div>
+              </div>
+                 <div class="form-group"> 
+                <label class="form-label">no_telp</label>
+                <div class="form-line">
+                  <input type="text" class="form-control" name="no_telp" value="{{ $r->no_telp }}" required />
+                </div>
+              </div>
+               <div class="form-group">
+                <div class="dz-message">
+                  <div class="drag-icon-cph">
+                    <i class="material-icons">touch_app</i>
+                  </div>
+                  <h3>Drop files here or click to upload.</h3>
+                  <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em>
+                </div>                
+                <div class="fallback">
+                  <input name="image" type="file" multiple />
                 </div>
               </div>
               <div class="form-group">

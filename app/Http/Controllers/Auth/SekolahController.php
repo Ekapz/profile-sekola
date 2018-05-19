@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sekolah;
 use Desa;
-
+use Session;
 class SekolahController extends Controller
 {
      /**
@@ -47,8 +47,8 @@ class SekolahController extends Controller
             $table->image = $name;
         }
         $table->email = $request->input('email');//inputan table
-        $table->website = $request->input('webiste');//inputan table
-        $table->kepsek = $request->input('kepsek');//inputan table
+        $table->website = $request->input('website');//inputan table
+        $table->kepala_sekolah = $request->input('kepala_sekolah');//inputan table
         
         $table->save();//eksekusi data
         Session::flash('message', "Sekolah berhasil ditambahkan.");//session buat alert
@@ -76,7 +76,7 @@ class SekolahController extends Controller
         }
         $table->email = $request->input('email');//inputan table
         $table->website = $request->input('webiste');//inputan table
-        $table->kepsek = $request->input('kepsek');//inputan table
+        $table->kepala_sekolah = $request->input('kepala_sekolah');//inputan table
         
         $table->save();//eksekusi data
         Session::flash('message', "Sekolah berhasil ditambahkan.");//session buat alert
