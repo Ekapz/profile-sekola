@@ -26,10 +26,7 @@
     <link href="{{asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
 
     <!-- Animation Css -->
-    <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />
-
-    <!-- Morris Chart Css-->
-    <link href="{{asset('plugins/morrisjs/morris.css')}}" rel="stylesheet" />    
+    <link href="{{asset('plugins/animate-css/animate.css')}}" rel="stylesheet" />    
 
     <!-- JQuery DataTable Css -->
     <link href="{{asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
@@ -239,23 +236,6 @@
 
 <!-- Jquery CountTo Plugin Js -->
 <script src="{{asset('plugins/jquery-countto/jquery.countTo.js')}}"></script>
-
-<!-- Morris Plugin Js -->
-<script src="{{asset('plugins/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('plugins/morrisjs/morris.js')}}"></script>
-
-<!-- ChartJs -->
-<script src="{{asset('plugins/chartjs/Chart.bundle.js')}}"></script>
-
-<!-- Flot Charts Plugin Js -->
-<script src="{{asset('plugins/flot-charts/jquery.flot.js')}}"></script>
-<script src="{{asset('plugins/flot-charts/jquery.flot.resize.js')}}"></script>
-<script src="{{asset('plugins/flot-charts/jquery.flot.pie.js')}}"></script>
-<script src="{{asset('plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-<script src="{{asset('plugins/flot-charts/jquery.flot.time.js')}}"></script>
-
-<!-- Sparkline Chart Plugin Js -->
-<script src="{{asset('plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
 <!-- Jquery DataTable Plugin Js -->
 <script src="{{asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
