@@ -38,7 +38,14 @@ class SekolahController extends Controller
         $table->rt = $request->input('rt');//inputan table
         $table->no_telp = $request->input('no_telp');//inputan table
         $table->no_fax = $request->input('no_fax');//inputan table
-        // $table->image = $request->input('rw');//inputan table
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = str_random().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $imagePath = $destinationPath. "/".  $name;
+            $image->move($destinationPath, $name);
+            $table->image = $name;
+        }
         $table->email = $request->input('email');//inputan table
         $table->website = $request->input('webiste');//inputan table
         $table->kepsek = $request->input('kepsek');//inputan table
@@ -51,7 +58,7 @@ class SekolahController extends Controller
     public function editSekolah(Request $request)
     {
         $table = Sekolah::find($request->input('id'));//manggil desa sesuai id
-         $table->nss = $request->input('nss');//inputan table
+        $table->nss = $request->input('nss');//inputan table
         $table->nama = $request->input('nama');//inputan table
         $table->alamat = $request->input('alamat');//inputan table
         $table->desa_id = $request->input('desa_id');//inputan table
@@ -59,7 +66,14 @@ class SekolahController extends Controller
         $table->rt = $request->input('rt');//inputan table
         $table->no_telp = $request->input('no_telp');//inputan table
         $table->no_fax = $request->input('no_fax');//inputan table
-        // $table->image = $request->input('rw');//inputan table
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = str_random().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $imagePath = $destinationPath. "/".  $name;
+            $image->move($destinationPath, $name);
+            $table->image = $name;
+        }
         $table->email = $request->input('email');//inputan table
         $table->website = $request->input('webiste');//inputan table
         $table->kepsek = $request->input('kepsek');//inputan table
