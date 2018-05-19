@@ -59,4 +59,4 @@ $response->send();
 
 $kernel->terminate($request, $response);
 
-Artisan::call('up');
+Artisan::call('down');
