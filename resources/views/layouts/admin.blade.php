@@ -274,6 +274,7 @@
 <!-- Custom Js -->
 <script src="{{asset('js/admin.js')}}"></script>
 <script src="{{asset('js/pages/tables/jquery-datatable.js')}}"></script>
+<script src="{{asset('js/pages/forms/advanced-form-elements.js')}}"></script>
 <script src="{{asset('js/pages/ui/notifications.js')}}"></script>
 <script src="{{asset('js/pages/index.js')}}"></script>
 
@@ -283,4 +284,5 @@
 <script type="text/javascript">
     @yield('foot-content')
 </script>
+@yield('foot-content-no-script')
 </html>

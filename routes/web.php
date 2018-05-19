@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function () {
 	});
 
 
-	Route::get('sekolah', 'Auth\AdminController@sekolah')->name('sekolah');
+	Route::get('sekolah', 'Auth\SekolahController@sekolah')->name('sekolah');
 	Route::get('guru', 'Auth\AdminController@guru')->name('guru');
 	Route::get('siswa', 'Auth\AdminController@siswa')->name('siswa');
 	Route::get('prestasi', 'Auth\AdminController@prestasi')->name('prestasi');

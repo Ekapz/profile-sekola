@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Sekolah;
-use desa;
+use Desa;
 
 class SekolahController extends Controller
 {
@@ -90,7 +90,4 @@ class SekolahController extends Controller
         Session::flash('message', "Kabupaten berhasil dihapus.");
         return back();
     }
-
-
 }
-
