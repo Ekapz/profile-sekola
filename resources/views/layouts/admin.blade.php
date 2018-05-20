@@ -221,6 +221,10 @@
 </body>
 <!-- Jquery Core Js -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('plugins/light-gallery/js/lightgallery-all.js')}}"></script>
+<script src="{{asset('js/pages/medias/image-gallery.js')}}"></script>
+<script src="{{asset('js/admin.js')}}"></script>
+
 
 <!-- Bootstrap Core Js -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
@@ -252,7 +256,6 @@
 <script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.js')}}"></script>
 
 <!-- Custom Js -->
-<script src="{{asset('js/admin.js')}}"></script>
 <script src="{{asset('js/pages/tables/jquery-datatable.js')}}"></script>
 <script src="{{asset('js/pages/forms/advanced-form-elements.js')}}"></script>
 <script src="{{asset('js/pages/ui/notifications.js')}}"></script>

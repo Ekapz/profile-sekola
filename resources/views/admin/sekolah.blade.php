@@ -5,6 +5,13 @@
 <link href="{{asset('plugins/light-gallery/css/lightgallery.css')}}" rel="stylesheet">
 @endsection
 
+@if(Session::has('message'))
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{ Session::get('message') }}
+</div>
+@endif
+
 @section('content')
 <div class="block-header">
 	<h2>Sekolah</h2>
@@ -36,8 +43,7 @@
 								<th>Nama Sekolah</th>
 								<th>Alamat</th>               
 								<th>Kontak</th>               
-								<th>Foto</th>               
-								<th>Kepsek</th>
+								<th>Foto</th>               								
 								<th>Option</th>
 							</tr>
 						</thead>            
@@ -48,24 +54,20 @@
 								<td>{{$r->nama}}</td>
 								<td>
 									{{$r->alamat}} , rt.{{$r->rt}}/{{$r->rw}}                
-									<br><b>Desa {{$r->desa->desa}}</b>
+									<hr><b>Desa {{$r->desa->desa}}</b>
 								</td>
 								<td>
 									Telepone : {{$r->no_telp}}
-									<br>Faximili : {{$r->no_fax}}
-									<br>Email : {{$r->email}}
-									<br>Website : <a href="{{$r->website}}">{{$r->website}}</a>
+									<hr>Faximili : {{$r->no_fax}}
+									<hr>Email : {{$r->email}}
+									<hr>Website : <a href="{{$r->website}}">{{$r->website}}</a>
+									<hr>Kepala Sekolah : {{$r->kepala_sekolah}}
 								</td>
-								<td>
-									<div id="aniimated-thumbnials" class="list-unstyled row">
-										<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-											<a href="{{ asset('uploads/'.$r->image) }}" data-sub-html="{{$r->nama}}">
-												<img class="img-responsive img-rounded" src="{{ asset('uploads/'.$r->image) }}">
-											</a>
-										</div>
-									</div>
-								</td>
-								<td>{{$r->kepala_sekolah}}</td>
+								<td id="aniimated-thumbnials" class="list-unstyled row">
+									<a href="{{ asset('uploads/'.$r->image) }}" data-sub-html="{{$r->nama}}">
+										<img class="img-responsive img-rounded" src="{{ asset('uploads/'.$r->image) }}">
+									</a>		
+								</td>								
 								<td class="text-center">
 									<button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $r->id }}editModal">
 										<i class="material-icons">edit</i>                    
@@ -190,7 +192,7 @@
 			<div class="modal-header">
 				<h4 class="modal-title" id="defaultModalLabel">Edit Sekolah</h4>
 			</div>
-			<form method="post" action="{{ route('editSekolah') }}">
+			<form method="post" action="{{ route('editSekolah') }}" enctype="multipart/form-data">
 				<div class="modal-body">
 					<div class="row clearfix">
 						<div class="col-sm-12">
@@ -199,13 +201,13 @@
 							<div class="form-group">
 								<label class="form-label">Nss</label>
 								<div class="form-line">
-									<input type="number" class="form-control" name="Nss" value="{{ $r->nss }}" required autofocus />
+									<input type="number" class="form-control" name="nss" value="{{ $r->nss }}" required autofocus />
 								</div>
 							</div>
 							<div class="form-group"> 
 								<label class="form-label">Nama Sekolah</label>
 								<div class="form-line">
-									<input type="text" class="form-control" name="desa" value="{{ $r->nama }}" required />
+									<input type="text" class="form-control" name="nama" value="{{ $r->nama }}" required />
 								</div>
 							</div>
 							<div class="form-group"> 
@@ -213,16 +215,65 @@
 								<div class="form-line">
 									<input type="text" class="form-control" name="alamat" value="{{ $r->alamat }}" required />
 								</div>
+							</div>							
+							<div class="form-group">
+								<p>
+									<b>Desa</b>
+								</p>
+								<select class="form-control show-tick" data-live-search="true" name="desa_id" required>
+									@foreach($semuadesa as $desa)
+									<option value="{{ $desa->id }}" {{ $desa->desa == $r->desa->desa ? 'selected' : null}}>{{ $desa->desa }}</option>
+									@endforeach
+								</select>
 							</div>
 							<div class="form-group"> 
-								<label class="form-label">no_telp</label>
+								<label class="form-label">Rw</label>
 								<div class="form-line">
-									<input type="text" class="form-control" name="no_telp" value="{{ $r->no_telp }}" required />
+									<input type="number" class="form-control" name="rw" value="{{ $r->rw }}" required />
+								</div>
+							</div>
+							<div class="form-group"> 
+								<label class="form-label">Rt</label>
+								<div class="form-line">
+									<input type="number" class="form-control" name="rt" value="{{ $r->rt }}" required />
 								</div>
 							</div>
 							<div class="form-group">
-								<input name="image" type="file" />
-							</div>							
+								<label class="form-label">Telepone</label>
+								<div class="form-line">
+									<input type="number" class="form-control" name="no_telp" value="{{ $r->no_telp }}" required />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Faximile</label>
+								<div class="form-line">
+									<input type="number" class="form-control" name="no_fax" value="{{ $r->no_fax }}" required />
+								</div>
+							</div>
+							<div class="form-group"> 
+								<label class="form-label">Email</label>
+								<div class="form-line">
+									<input type="email" class="form-control" name="email" value="{{ $r->email }}" required />
+								</div>
+							</div>
+							<div class="form-group"> 
+								<label class="form-label">Website</label>
+								<div class="form-line">
+									<input type="url" class="form-control" name="website" value="{{ $r->website }}" required />
+								</div>
+							</div>
+							<div class="form-group"> 
+								<label class="form-label">Nama Kepala Sekolah</label>
+								<div class="form-line">
+									<input type="text" class="form-control" name="kepala_sekolah" value="{{ $r->kepala_sekolah }}" required />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="form-label">Upload Foto</label>
+								<div class="form-line">									
+									<input name="image" type="file" />
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -258,11 +309,4 @@
 	</div>
 </div>
 @endforeach
-@endsection
-
-@section('foot-content-no-script')
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('plugins/light-gallery/js/lightgallery-all.js')}}"></script>
-<script src="{{asset('js/pages/medias/image-gallery.js')}}"></script>
-<script src="{{asset('js/admin.js')}}"></script>
 @endsection

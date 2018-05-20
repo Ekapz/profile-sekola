@@ -75,7 +75,7 @@ class SekolahController extends Controller
             $table->image = $name;
         }
         $table->email = $request->input('email');//inputan table
-        $table->website = $request->input('webiste');//inputan table
+        $table->website = $request->input('website');//inputan table
         $table->kepala_sekolah = $request->input('kepala_sekolah');//inputan table
         
         $table->save();//eksekusi data
