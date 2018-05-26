@@ -26,6 +26,8 @@ class CreateSiswasTable extends Migration
             $table->string('email');
             $table->unsignedInteger('jurusan_id');
             $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('cascade')->onUpdate('cascade');
+             $table->unsignedInteger('sekolah_id');
+            $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

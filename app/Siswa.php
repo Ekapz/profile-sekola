@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
-    public function jurusan()
+	public function jurusan()
 	{
 		return $this->belongsTo(Jurusan::class);
+
+	}
+	public function sekolah()
+	{
+		return $this->belongsTo(Sekolah::class);
+
 	}
 }

@@ -42,9 +42,9 @@ Route::prefix('admin')->group(function () {
 	});
 
 	Route::prefix('provinsi')->group(function () {	
-		Route::post('add-provinsi', 'Auth\provinsiController@addprovinsi')->name('addProvinsi');
-		Route::post('edit-provinsi', 'Auth\provinsiController@editprovinsi')->name('editProvinsi');
-		Route::post('delete-provinsi', 'Auth\provinsiController@deleteprovinsi')->name('deleteProvinsi');
+		Route::post('add-provinsi', 'Auth\ProvinsiController@addprovinsi')->name('addProvinsi');
+		Route::post('edit-provinsi', 'Auth\ProvinsiController@editprovinsi')->name('editProvinsi');
+		Route::post('delete-provinsi', 'Auth\ProvinsiController@deleteprovinsi')->name('deleteProvinsi');
 		Route::get('/', 'Auth\ProvinsiController@provinsi')->name('provinsi');
 	});
 
@@ -60,12 +60,14 @@ Route::prefix('admin')->group(function () {
 		Route::post('add-fasilitas', 'Auth\FasilitasController@addFasilitas')->name('addFasilitas');
 		Route::post('edit-fasilitas', 'Auth\FasilitasController@editFasilitas')->name('editFasilitas');
 		Route::post('delete-fasilitas', 'Auth\FasilitasController@deleteFasilitas')->name('deleteFasilitas');
+		Route::get('/', 'Auth\FasilitasController@fasilitas')->name('fasilitas');
 	});
 
 	Route::prefix('eskul')->group(function () {	
 		Route::post('add-Eskul', 'Auth\EskulController@addEskul')->name('addEskul');
 		Route::post('edit-Eskul', 'Auth\EskulController@editEskul')->name('editEskul');
 		Route::post('delete-Eskul', 'Auth\EskulController@deleteEskul')->name('deleteEskul');
+		Route::get('/', 'Auth\EskulController@eskul')->name('eskul');	
 	});
 
 	Route::prefix('prestasi')->group(function () {	
@@ -96,8 +98,23 @@ Route::prefix('admin')->group(function () {
 		Route::get('/', 'Auth\GaleriController@galeri')->name('galeri');
 	});
 
-	Route::get('guru', 'Auth\AdminController@guru')->name('guru');
-	Route::get('siswa', 'Auth\AdminController@siswa')->name('siswa');
-	Route::get('fasilitas', 'Auth\FasilitasController@fasilitas')->name('fasilitas');
-	Route::get('eskul', 'Auth\EskulController@eskul')->name('eskul');	
+	Route::prefix('guru')->group(function () {	
+		Route::post('add-Guru', 'Auth\GuruController@addGuru')->name('addGuru');
+		Route::post('edit-Guru', 'Auth\GuruController@editGuru')->name('editGuru');
+		Route::post('delete-Guru', 'Auth\GuruController@deleteGuru')->name('deleteGuru');
+		Route::get('/', 'Auth\GuruController@guru')->name('guru');
+	});
+
+	Route::prefix('siswa')->group(function () {	
+		Route::post('add-Siswa', 'Auth\SiswaController@addSiswa')->name('addSiswa');
+		Route::post('edit-Siswa', 'Auth\SiswaController@editSiswa')->name('editSiswa');
+		Route::post('delete-Siswa', 'Auth\SiswaController@deleteSiswa')->name('deleteSiswa');
+		Route::get('/', 'Auth\SiswaController@Siswa')->name('siswa');
+	});
+	Route::prefix('user')->group(function () {	
+		Route::post('add-User', 'Auth\UsersController@addUser')->name('addUser');
+		Route::post('edit-User', 'Auth\UsersController@editUser')->name('editUser');
+		Route::post('delete-User', 'Auth\UsersController@deleteUser')->name('deleteUser');
+		Route::get('/', 'Auth\UsersController@user')->name('user');
+	});
 });

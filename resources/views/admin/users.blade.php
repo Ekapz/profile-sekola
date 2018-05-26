@@ -1,21 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="block-header">
-  <h2>Kabupaten</h2>
-</div>
 @if(Session::has('message'))
 <div class="alert alert-success alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   {{ Session::get('message') }}
 </div>
 @endif
+<div class="block-header">
+  <h2>Users</h2>
+</div>
 <div class="row clearfix">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="card">
       <div class="header">
         <h2>
-          Data Kabupaten
+          Data User
         </h2>
         <ul class="header-dropdown m-r--5">
           <li class="dropdown">
@@ -34,24 +34,22 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Kode</th>
-                <th>Kabupaten</th>
-                <th>Provinsi</th>
+                <th>Nama</th>
+                <th>Email</th>
                 <th>Option</th>
               </tr>
             </thead>            
             <tbody>
-              @foreach($kabupaten as $paten)
+              @foreach($users as $r)
               <tr>
-                <td>{{ $paten->id }}</td>
-                <td>{{ $paten->kode }}</td>
-                <td>{{ $paten->kabupaten }}</td>                
-                <td>{{ $paten->provinsi->provinsi }}</td>
+                <td>{{ $r->id }}</td>
+                <td>{{ $r->nama }}</td>
+                <td>{{ $r->email }}</td>                
                 <td class="text-center">
-                  <button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $paten->id }}editModal">
+                  <button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $r->id }}editModal">
                     <i class="material-icons">edit</i>                    
                   </button>
-                  <button type="button" class="btn btn-warning btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $paten->id }}deleteModal">
+                  <button type="button" class="btn btn-warning btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $r->id }}deleteModal">
                     <i class="material-icons">delete</i>                    
                   </button>                  
                 </td>
@@ -69,35 +67,41 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="defaultModalLabel">Tambah Kabupaten</h4>
+        <h4 class="modal-title" id="defaultModalLabel">Tambah User</h4>
       </div>
-      <form method="post" action="{{ route('addKabupaten') }}">
+      <form method="post" action="{{ route('addUser') }}">
         <div class="modal-body">
           <div class="row clearfix">
             <div class="col-sm-12">
               {{ csrf_field() }}
               <div class="form-group">
-                <label class="form-label">Kode</label>
+                <label class="form-label">Nama</label>
                 <div class="form-line">
-                  <input type="number" class="form-control" name="kode" required autofocus />
+                  <input type="text" class="form-control" name="nama" required autofocus />
                 </div>
               </div>
               <div class="form-group"> 
-                <label class="form-label">Kabupaten</label>
+                <label class="form-label">Email</label>
                 <div class="form-line">
-                  <input type="text" class="form-control" name="kabupaten" required />
+                  <input type="text" class="form-control" name="email" required />
                 </div>
               </div>
-              <div class="form-group">
-                <p>
-                  <b>Provinsi</b>
-                </p>
-                <select class="form-control show-tick" data-live-search="true" name="provinsi_id" required>
-                  @foreach($semuaprovinsi as $provinsi)
-                  <option value="{{ $provinsi->id }}">{{ $provinsi->provinsi }}</option>
-                  @endforeach
-                </select>
+              <div class="form-group"> 
+                <label class="form-label">password</label>
+                <div class="form-line">
+                  <input type="password" class="form-control" name="password" required />
+                </div>
               </div>
+              <div class="form-group"> 
+                <label class="form-label">Hak Akses</label>
+                <div class="form-line">
+                  <select class="form-control show-tick" data-live-search="true" name="role_id" required>
+                    <option value="0">Siswa</option>
+                    <option value="1">Guru</option>
+                    <option value="2">Admin</option>
+                  </select>
+                </div>
+              </div>              
             </div>
           </div>
         </div>
@@ -110,39 +114,45 @@
   </div>
 </div>
 
-@foreach($kabupaten as $paten)
-<div class="modal fade" id="{{ $paten->id }}editModal" role="dialog">
+@foreach($users as $user)
+<div class="modal fade" id="{{ $user->id }}editModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="defaultModalLabel">Edit Kabupaten</h4>
+        <h4 class="modal-title" id="defaultModalLabel">Edit user</h4>
       </div>
-      <form method="post" action="{{ route('editKabupaten') }}">
+      <form method="post" action="{{ route('editUser') }}">
         <div class="modal-body">
           <div class="row clearfix">
             <div class="col-sm-12">
               {{ csrf_field() }}
-              <input type="hidden" name="id" value="{{ $paten->id }}">
+              <input type="hidden" name="id" value="{{ $user->id }}">
               <div class="form-group">
-                <label class="form-label">Kode</label>
+                <label class="form-label">Nama</label>
                 <div class="form-line">
-                  <input type="number" class="form-control" name="kode" value="{{ $paten->kode }}" required autofocus />
+                  <input type="number" class="form-control" name="nama" value="{{ $user->nama }}" required autofocus />
                 </div>
               </div>
               <div class="form-group"> 
-                <label class="form-label">Kabupaten</label>
+                <label class="form-label">Email</label>
                 <div class="form-line">
-                  <input type="text" class="form-control" name="kabupaten" value="{{ $paten->kabupaten }}" required />
+                  <input type="text" class="form-control" name="email" value="{{ $user->email }}" required />
+                </div>
+              </div>
+              <div class="form-group"> 
+                <label class="form-label">Password</label>
+                <div class="form-line">
+                  <input type="password" class="form-control" name="password"/>
                 </div>
               </div>
               <div class="form-group">
                 <p>
-                  <b>Provinsi</b>
+                  <b>Role</b>
                 </p>
-                <select class="form-control show-tick" data-live-search="true" name="provinsi_id" required>
-                  @foreach($semuaprovinsi as $prov)
-                  <option value="{{ $prov->id }}" {{ $paten->provinsi->provinsi == $prov->provinsi ? 'selected' : null }}>{{ $prov->provinsi }}</option>
-                  @endforeach
+                <select class="form-control show-tick" data-live-search="true" name="role_id" required>
+                  <option value="0">Siswa</option>
+                  <option value="2">Guru</option>
+                  <option value="3">Admin</option>
                 </select>
               </div>
             </div>
@@ -158,19 +168,19 @@
 </div>
 @endforeach
 
-@foreach($kabupaten as $paten)
-<div class="modal fade" id="{{ $paten->id }}deleteModal" tabindex="-1" role="dialog">
+@foreach($users as $user)
+<div class="modal fade" id="{{ $user->id }}deleteModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="smallModalLabel">Hapus Kabupaten</h4>
+        <h4 class="modal-title" id="smallModalLabel">Hapus User</h4>
       </div>
       <div class="modal-body">
-        Yakin ingin menghapus Kabupaten {{ $paten->kabupaten }}?
+        Yakin ingin menghapus akun {{ $user->name }}?
       </div>
-      <form method="post" action="{{ route('deleteKabupaten') }}">
+      <form method="post" action="{{ route('deleteUser') }}">
         {{ csrf_field() }}
-        <input type="hidden" name="id" value="{{ $paten->id }}">
+        <input type="hidden" name="id" value="{{ $user->id }}">
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger waves-effect">Hapus</button>
           <button type="button" class="btn btn-warning waves-effect" data-dismiss="modal">Keluar</button>

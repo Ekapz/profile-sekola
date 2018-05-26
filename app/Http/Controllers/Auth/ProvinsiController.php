@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Provinsi;
+use Session;
 
 class ProvinsiController extends Controller
 {
@@ -26,7 +27,7 @@ class ProvinsiController extends Controller
 
     public function addProvinsi(Request $request)
     {
-        $table = new Desa;//daftarin table desa dengan variable modle
+        $table = new Provinsi;//daftarin table desa dengan variable modle
         $table->kode = $request->input('kode');//inputan table
         $table->provinsi = $request->input('provinsi');//inputan table
         $table->save();//eksekusi data
