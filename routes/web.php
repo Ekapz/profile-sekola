@@ -22,9 +22,6 @@ Route::get('home', 'HomeController@index')->name('home');
 Route::prefix('admin')->group(function () {
 	Route::get('/', 'Auth\AdminController@adminform')->name('admin');
 	
-	
-
-	
 	Route::prefix('desa')->group(function () {	
 		Route::post('add-desa', 'Auth\DesaController@addDesa')->name('addDesa');
 		Route::post('edit-desa', 'Auth\DesaController@editDesa')->name('editDesa');
@@ -58,11 +55,13 @@ Route::prefix('admin')->group(function () {
 		Route::get('/', 'Auth\SekolahController@sekolah')->name('sekolah');
 
 	});
+
 	Route::prefix('fasilitas')->group(function () {	
 		Route::post('add-fasilitas', 'Auth\FasilitasController@addFasilitas')->name('addFasilitas');
 		Route::post('edit-fasilitas', 'Auth\FasilitasController@editFasilitas')->name('editFasilitas');
 		Route::post('delete-fasilitas', 'Auth\FasilitasController@deleteFasilitas')->name('deleteFasilitas');
 	});
+
 	Route::prefix('eskul')->group(function () {	
 		Route::post('add-Eskul', 'Auth\EskulController@addEskul')->name('addEskul');
 		Route::post('edit-Eskul', 'Auth\EskulController@editEskul')->name('editEskul');
@@ -90,11 +89,15 @@ Route::prefix('admin')->group(function () {
 		Route::get('/', 'Auth\KurikulumController@kurikulum')->name('kurikulum');
 	});
 
-
+	Route::prefix('galeri')->group(function () {	
+		Route::post('add-galeri', 'Auth\GaleriController@addgaleri')->name('addGaleri');
+		Route::post('edit-galeri', 'Auth\GaleriController@editgaleri')->name('editGaleri');
+		Route::post('delete-galeri', 'Auth\GaleriController@deletegaleri')->name('deleteGaleri');
+		Route::get('/', 'Auth\GaleriController@galeri')->name('galeri');
+	});
 
 	Route::get('guru', 'Auth\AdminController@guru')->name('guru');
 	Route::get('siswa', 'Auth\AdminController@siswa')->name('siswa');
 	Route::get('fasilitas', 'Auth\FasilitasController@fasilitas')->name('fasilitas');
-	Route::get('eskul', 'Auth\EskulController@eskul')->name('eskul');
-	Route::get('galeri', 'Auth\AdminController@galeri')->name('galeri');
+	Route::get('eskul', 'Auth\EskulController@eskul')->name('eskul');	
 });

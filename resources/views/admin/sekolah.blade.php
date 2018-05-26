@@ -63,11 +63,11 @@
 									<hr>Website : <a href="{{$r->website}}">{{$r->website}}</a>
 									<hr>Kepala Sekolah : {{$r->kepala_sekolah}}
 								</td>
-								<td id="aniimated-thumbnials" class="list-unstyled row">
+								<td id="aniimated-thumbnials" class="list-unstyled row text-center">
 									<a href="{{ asset('uploads/'.$r->image) }}" data-sub-html="{{$r->nama}}">
 										<img class="img-responsive img-rounded" src="{{ asset('uploads/'.$r->image) }}">
 									</a>		
-								</td>								
+								</td>
 								<td class="text-center">
 									<button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $r->id }}editModal">
 										<i class="material-icons">edit</i>                    
