@@ -47,7 +47,7 @@
 								<th>Option</th>
 							</tr>
 						</thead>            
-						<tbody>
+						<tbody id="aniimated-thumbnials" class="list-unstyled row text-center">
 							@foreach($sekolah as $r)
 							<tr>
 								<td>{{$r->nss}}</td>
@@ -63,7 +63,7 @@
 									<hr>Website : <a href="{{$r->website}}">{{$r->website}}</a>
 									<hr>Kepala Sekolah : {{$r->kepala_sekolah}}
 								</td>
-								<td id="aniimated-thumbnials" class="list-unstyled row text-center">
+								<td>
 									<a href="{{ asset('uploads/'.$r->image) }}" data-sub-html="{{$r->nama}}">
 										<img class="img-responsive img-rounded" src="{{ asset('uploads/'.$r->image) }}">
 									</a>		

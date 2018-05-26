@@ -51,18 +51,18 @@
                 <th>Option</th>
               </tr>
             </thead>            
-            <tbody>
+            <tbody id="aniimated-thumbnials" class="list-unstyled row">
               @foreach($semuagaleri as $galeri)
               <tr>
                 <td>{{ $galeri->id }}</td>
                 <td>{{ $galeri->judul }}</td>
                 <td>{{ $galeri->deskripsi }}</td>
-                <td>{{ $galeri->sekolah->nama }}</td>
-                <td id="aniimated-thumbnials" class="list-unstyled row text-center">
-                  <a href="{{ asset('uploads/'.$galeri->image) }}" data-sub-html="<h4>{{ $galeri->judul }}</h4><p>{{ $galeri->deskripsi }}</p>">
-                    <img class="img-responsive img-rounded" src="{{ asset('uploads/'.$galeri->image) }}">
+                <td>
+                  <a href="{{ asset('uploads/'.$galeri->image) }}" data-sub-html="<h3>{{ $galeri->sekolah->nama }}</h3><h4>{{ $galeri->judul }}</h4><p>{{ $galeri->deskripsi }}</p>">
+                    <img class="img-responsive img-rounded" src="{{ asset('uploads/'.$galeri->image) }}">                    
                   </a>    
                 </td>
+                <td>{{ $galeri->sekolah->nama }}</td>
                 <td class="text-center">
                   <button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $galeri->id }}editModal">
                     <i class="material-icons">edit</i>                    
