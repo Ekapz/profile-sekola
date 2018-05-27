@@ -367,8 +367,13 @@
     <section class="content">
         <div class="container-fluid">            
             <ol class="breadcrumb breadcrumb-bg-red">
-                <li><a href="javascript:void(0);"><i class="material-icons">home</i> Home</a></li>
-                <li class="active"><i class="material-icons">library_books</i> Library</li>
+                <li class="{{ Request::segment(1) === 'admin' && Request::segment(2) === null ? 'active' : null }}"><a href="{{ url('admin') }}"><i class="material-icons">home</i> Home</a></li>
+                @if(Request::segment(2) === null)
+                @else
+                <li class="{{ Request::segment(1) === 'admin' && Request::segment(2) === null ? 'active' : null }}"><i class="material-icons">library_books</i> <?php
+                echo ucwords(Request::segment(2));
+                ?></li>
+                @endif
             </ol>
         </div>    
         <div class="container-fluid">            
