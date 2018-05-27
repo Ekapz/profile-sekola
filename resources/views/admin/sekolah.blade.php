@@ -170,7 +170,7 @@
 							<div class="form-group">
 								<label class="form-label">Upload Foto</label>
 								<div class="form-line">									
-									<input name="image" type="file" required />
+									<input name="image" type="file" accept="image/*" required />
 								</div>
 							</div>
 						</div>
@@ -271,7 +271,7 @@
 							<div class="form-group">
 								<label class="form-label">Upload Foto</label>
 								<div class="form-line">									
-									<input name="image" type="file" />
+									<input name="image" type="file" accept="image/*" />
 								</div>
 							</div>
 						</div>

@@ -48,26 +48,34 @@ class GaleriController extends Controller
         		$table->save();//eksekusi data
         	}
         }        
-        Session::flash('message', "Desa berhasil ditambahkan.");//session buat alert
+        Session::flash('message', "Galeri berhasil ditambahkan.");//session buat alert
         return back();
     }
 
     public function editGaleri(Request $request)
     {
-        $table = Desa::find($request->input('id'));//manggil desa sesuai id
-        $table->kode = $request->input('kode');//merubah isian tabel
-        $table->desa = $request->input('desa');//merubah isian tabel
-        $table->kecamatan_id = $request->input('kecamatan_id');//merubah isian tabel
+        $table = Galeri::find($request->input('id'));//manggil desa sesuai id
+        $table->judul = $request->input('judul');//merubah isian tabel
+        $table->deskripsi = $request->input('deskripsi');//merubah isian tabel
+        $table->sekolah_id = $request->input('sekolah_id');//merubah isian tabel
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = str_random().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads');
+            $imagePath = $destinationPath. "/".  $name;
+            $image->move($destinationPath, $name);
+            $table->image = $name;
+        }
         $table->save();
-        Session::flash('message', "Desa berhasil diedit.");
+        Session::flash('message', "Galeri berhasil diedit.");
         return back();
     }
 
     public function deleteGaleri(Request $request)
     {
-    	$table = Desa::find($request->input('id'));        
+    	$table = Galeri::find($request->input('id'));        
         $table->delete();//delete table
-        Session::flash('message', "Desa berhasil dihapus.");
+        Session::flash('message', "Galeri berhasil dihapus.");
         return back();
     }
 }
