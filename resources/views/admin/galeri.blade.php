@@ -35,43 +35,56 @@
         </ul>
       </div>
       <div class="body">
-        <div class="table-responsive">          
-          <table class="table table-bordered table-striped table-hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Judul</th>
-                <th>Deskripsi</th>
-                <th>Gambar</th>
-                <th>Sekolah</th>
-                <th>Option</th>
-              </tr>
-            </thead>            
-            <tbody id="aniimated-thumbnials" class="list-unstyled row">
-              @foreach($semuagaleri as $galeri)
-              <tr>
-                <td>{{ $galeri->id }}</td>
-                <td>{{ $galeri->judul }}</td>
-                <td>{{ $galeri->deskripsi }}</td>
-                <td>
-                  <a href="{{ asset('uploads/'.$galeri->image) }}" data-sub-html="<h3>{{ $galeri->sekolah->nama }}</h3><h4>{{ $galeri->judul }}</h4><p>{{ $galeri->deskripsi }}</p>">
-                    <img class="img-responsive img-rounded" src="{{ asset('uploads/'.$galeri->image) }}">                    
-                  </a>    
-                </td>
-                <td>{{ $galeri->sekolah->nama }}</td>
-                <td class="text-center">
-                  <button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $galeri->id }}editModal">
-                    <i class="material-icons">edit</i>                    
-                  </button>
-                  <button type="button" class="btn btn-warning btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $galeri->id }}deleteModal">
-                    <i class="material-icons">delete</i>                    
-                  </button>                  
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
+        <form action="{{ route('deleteMultiGaleri') }}" method="POST" >
+          {{ csrf_field() }}
+          <input type="hidden" name="_method" value="delete">
+          <div class="table-responsive">          
+            <table class="table table-bordered table-striped table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 8px;">
+                    <input type="checkbox" id="basic_checkbox_0" onClick="toggle(this)" />
+                    <label for="basic_checkbox_0">Centang Semua</label>
+                  </th>
+                  <th>ID</th>
+                  <th>Judul</th>
+                  <th>Deskripsi</th>
+                  <th>Gambar</th>
+                  <th>Sekolah</th>
+                  <th>Option</th>
+                </tr>
+              </thead>
+              <tbody id="aniimated-thumbnials" class="list-unstyled row">                
+                @foreach($semuagaleri as $galeri)
+                <tr>
+                  <td class="text-center">
+                    <input type="checkbox" id="basic_checkbox_{{ $galeri->id }}" name="galeries[]" value="{{ $galeri->id }}" />
+                    <label for="basic_checkbox_{{ $galeri->id }}"></label>
+                  </td>
+                  <td>{{ $galeri->id }}</td>
+                  <td>{{ $galeri->judul }}</td>
+                  <td>{{ $galeri->deskripsi }}</td>
+                  <td>
+                    <a href="{{ asset('uploads/'.$galeri->image) }}" data-sub-html="<h3>{{ $galeri->sekolah->nama }}</h3><h4>{{ $galeri->judul }}</h4><p>{{ $galeri->deskripsi }}</p>">
+                      <img class="img-responsive img-rounded" src="{{ asset('uploads/'.$galeri->image) }}">                    
+                    </a>    
+                  </td>
+                  <td>{{ $galeri->sekolah->nama }}</td>
+                  <td class="text-center">
+                    <button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $galeri->id }}editModal">
+                      <i class="material-icons">edit</i>                    
+                    </button>
+                    <button type="button" class="btn btn-warning btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $galeri->id }}deleteModal">
+                      <i class="material-icons">delete</i>                    
+                    </button>                  
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          <button class="btn btn-danger">Hapus Terpilih</button>
+        </form>
       </div>
     </div>
   </div>
@@ -205,4 +218,13 @@
 </div>
 @endforeach
 
+@endsection
+
+@section('foot-content')
+function toggle(source) {
+  checkboxes = document.getElementsByName('galeries[]');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
 @endsection

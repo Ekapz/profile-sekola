@@ -59,12 +59,12 @@ class GaleriController extends Controller
         $table->deskripsi = $request->input('deskripsi');//merubah isian tabel
         $table->sekolah_id = $request->input('sekolah_id');//merubah isian tabel
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $name = str_random().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/uploads');
-            $imagePath = $destinationPath. "/".  $name;
-            $image->move($destinationPath, $name);
-            $table->image = $name;
+        	$image = $request->file('image');
+        	$name = str_random().'.'.$image->getClientOriginalExtension();
+        	$destinationPath = public_path('/uploads');
+        	$imagePath = $destinationPath. "/".  $name;
+        	$image->move($destinationPath, $name);
+        	$table->image = $name;
         }
         $table->save();
         Session::flash('message', "Galeri berhasil diedit.");
@@ -77,5 +77,11 @@ class GaleriController extends Controller
         $table->delete();//delete table
         Session::flash('message', "Galeri berhasil dihapus.");
         return back();
+    }
+
+    public function destroy(Request $request)
+    {
+    	Galeri::destroy($request->galeries); 
+    	return back();
     }
 }

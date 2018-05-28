@@ -96,6 +96,7 @@ Route::prefix('admin')->group(function () {
 		Route::post('edit-galeri', 'Auth\GaleriController@editgaleri')->name('editGaleri');
 		Route::post('delete-galeri', 'Auth\GaleriController@deletegaleri')->name('deleteGaleri');
 		Route::get('/', 'Auth\GaleriController@galeri')->name('galeri');
+		Route::delete('/', 'Auth\GaleriController@destroy')->name('deleteMultiGaleri');
 	});
 
 	Route::prefix('guru')->group(function () {	

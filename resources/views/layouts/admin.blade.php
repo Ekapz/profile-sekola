@@ -228,48 +228,52 @@
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
-                    <ul class="demo-choose-skin">
-                        <li data-theme="red" class="active">
+                    <ul class="demo-choose-skin">                        
+                        <li data-theme="red" onclick="event.preventDefault();document.getElementById('red-form').submit();">
                             <div class="red"></div>
                             <span>Red</span>
-                        </li>
-                        <li data-theme="pink">
+                        </li>                        
+                        <form id="test-form" action="{{ url('/') }}" method="get" style="display: none;">
+                            {{ csrf_field() }}
+
+                        </form>                        
+                        <li data-theme="pink" onclick="event.preventDefault();document.getElementById('pink-form').submit();">
                             <div class="pink"></div>
                             <span>Pink</span>
                         </li>
-                        <li data-theme="purple">
+                        <li data-theme="purple" onclick="event.preventDefault();document.getElementById('purple-form').submit();">
                             <div class="purple"></div>
                             <span>Purple</span>
                         </li>
-                        <li data-theme="deep-purple">
+                        <li data-theme="deep-purple" onclick="event.preventDefault();document.getElementById('deep-purple-form').submit();">
                             <div class="deep-purple"></div>
                             <span>Deep Purple</span>
                         </li>
-                        <li data-theme="indigo">
+                        <li data-theme="indigo" onclick="event.preventDefault();document.getElementById('indigo-form').submit();">
                             <div class="indigo"></div>
                             <span>Indigo</span>
                         </li>
-                        <li data-theme="blue">
+                        <li data-theme="blue" onclick="event.preventDefault();document.getElementById('blue-form').submit();">
                             <div class="blue"></div>
                             <span>Blue</span>
                         </li>
-                        <li data-theme="light-blue">
+                        <li data-theme="light-blue"  onclick="event.preventDefault();document.getElementById('light-blue-form').submit();">
                             <div class="light-blue"></div>
                             <span>Light Blue</span>
                         </li>
-                        <li data-theme="cyan">
+                        <li data-theme="cyan" onclick="event.preventDefault();document.getElementById('cyan-form').submit();">
                             <div class="cyan"></div>
                             <span>Cyan</span>
                         </li>
-                        <li data-theme="teal">
+                        <li data-theme="teal" onclick="event.preventDefault();document.getElementById('teal-form').submit();">
                             <div class="teal"></div>
                             <span>Teal</span>
                         </li>
-                        <li data-theme="green">
+                        <li data-theme="green" onclick="event.preventDefault();document.getElementById('green-form').submit();">
                             <div class="green"></div>
                             <span>Green</span>
                         </li>
-                        <li data-theme="light-green">
+                        <li data-theme="light-green" onclick="event.preventDefault();document.getElementById('light-green-form').submit();">
                             <div class="light-green"></div>
                             <span>Light Green</span>
                         </li>
