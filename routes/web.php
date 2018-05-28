@@ -21,6 +21,7 @@ Route::get('home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
 	Route::get('/', 'Auth\AdminController@adminform')->name('admin');
+	Route::post('/', 'Auth\AdminController@adminTheme')->name('adminPost');
 	
 	Route::prefix('desa')->group(function () {	
 		Route::post('add-desa', 'Auth\DesaController@addDesa')->name('addDesa');

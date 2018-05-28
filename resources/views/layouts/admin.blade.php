@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+$c_theme = \App\Config::where('config', '=', 'theme')->value('value');
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -52,12 +54,12 @@
 </style>
 </head>
 
-<body class="theme-red">
+<body class="theme-{{ $c_theme }}">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
-                <div class="spinner-layer pl-red">
+                <div class="spinner-layer pl-{{ $c_theme }}">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div>
@@ -224,95 +226,25 @@
         <!-- #END# Left Sidebar -->
         <aside id="rightsidebar" class="right-sidebar">
             <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>                
+                <li role="presentation" class="active" style="width: 100%;"><a href="#skins" data-toggle="tab">Tema</a></li>                
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
-                    <ul class="demo-choose-skin">                        
-                        <li data-theme="red" onclick="event.preventDefault();document.getElementById('red-form').submit();">
-                            <div class="red"></div>
-                            <span>Red</span>
-                        </li>                        
-                        <form id="test-form" action="{{ url('/') }}" method="get" style="display: none;">
+                    <ul class="demo-choose-skin">
+                        <?php
+                        $themes = \App\Theme::all();
+                        ?>
+                        @foreach($themes as $theme)
+                        <li class="{{ $theme->theme == $c_theme ? 'active' : null }}" data-theme="{{ $theme->theme }}" onclick="event.preventDefault();document.getElementById('{{ $theme->theme }}-form').submit();">
+                            <div class="{{ $theme->theme }}"></div>
+                            <span>{{ $theme->title }}</span>
+                        </li>
+                        <form id="{{ $theme->theme }}-form" action="{{ route('adminPost') }}" method="post" style="display: none;">
                             {{ csrf_field() }}
-
-                        </form>                        
-                        <li data-theme="pink" onclick="event.preventDefault();document.getElementById('pink-form').submit();">
-                            <div class="pink"></div>
-                            <span>Pink</span>
-                        </li>
-                        <li data-theme="purple" onclick="event.preventDefault();document.getElementById('purple-form').submit();">
-                            <div class="purple"></div>
-                            <span>Purple</span>
-                        </li>
-                        <li data-theme="deep-purple" onclick="event.preventDefault();document.getElementById('deep-purple-form').submit();">
-                            <div class="deep-purple"></div>
-                            <span>Deep Purple</span>
-                        </li>
-                        <li data-theme="indigo" onclick="event.preventDefault();document.getElementById('indigo-form').submit();">
-                            <div class="indigo"></div>
-                            <span>Indigo</span>
-                        </li>
-                        <li data-theme="blue" onclick="event.preventDefault();document.getElementById('blue-form').submit();">
-                            <div class="blue"></div>
-                            <span>Blue</span>
-                        </li>
-                        <li data-theme="light-blue"  onclick="event.preventDefault();document.getElementById('light-blue-form').submit();">
-                            <div class="light-blue"></div>
-                            <span>Light Blue</span>
-                        </li>
-                        <li data-theme="cyan" onclick="event.preventDefault();document.getElementById('cyan-form').submit();">
-                            <div class="cyan"></div>
-                            <span>Cyan</span>
-                        </li>
-                        <li data-theme="teal" onclick="event.preventDefault();document.getElementById('teal-form').submit();">
-                            <div class="teal"></div>
-                            <span>Teal</span>
-                        </li>
-                        <li data-theme="green" onclick="event.preventDefault();document.getElementById('green-form').submit();">
-                            <div class="green"></div>
-                            <span>Green</span>
-                        </li>
-                        <li data-theme="light-green" onclick="event.preventDefault();document.getElementById('light-green-form').submit();">
-                            <div class="light-green"></div>
-                            <span>Light Green</span>
-                        </li>
-                        <li data-theme="lime">
-                            <div class="lime"></div>
-                            <span>Lime</span>
-                        </li>
-                        <li data-theme="yellow">
-                            <div class="yellow"></div>
-                            <span>Yellow</span>
-                        </li>
-                        <li data-theme="amber">
-                            <div class="amber"></div>
-                            <span>Amber</span>
-                        </li>
-                        <li data-theme="orange">
-                            <div class="orange"></div>
-                            <span>Orange</span>
-                        </li>
-                        <li data-theme="deep-orange">
-                            <div class="deep-orange"></div>
-                            <span>Deep Orange</span>
-                        </li>
-                        <li data-theme="brown">
-                            <div class="brown"></div>
-                            <span>Brown</span>
-                        </li>
-                        <li data-theme="grey">
-                            <div class="grey"></div>
-                            <span>Grey</span>
-                        </li>
-                        <li data-theme="blue-grey">
-                            <div class="blue-grey"></div>
-                            <span>Blue Grey</span>
-                        </li>
-                        <li data-theme="black">
-                            <div class="black"></div>
-                            <span>Black</span>
-                        </li>
+                            <input type="hidden" name="theme" value="{{ $theme->theme }}">
+                            <input type="hidden" name="title" value="{{ $theme->title }}">
+                        </form>
+                        @endforeach                        
                     </ul>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="settings">
@@ -370,7 +302,7 @@
     </section>            
     <section class="content">
         <div class="container-fluid">            
-            <ol class="breadcrumb breadcrumb-bg-red">
+            <ol class="breadcrumb breadcrumb-bg-{{ $c_theme }}">
                 <li class="{{ Request::segment(1) === 'admin' && Request::segment(2) === null ? 'active' : null }}"><a href="{{ url('admin') }}"><i class="material-icons">home</i> Home</a></li>
                 @if(Request::segment(2) === null)
                 @else

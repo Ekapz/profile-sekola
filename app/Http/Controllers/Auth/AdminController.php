@@ -8,6 +8,7 @@ use Session;
 use Desa;//manggil model desa
 use Kecamatan;
 use Kabupaten;
+use App\Config;
 
 class AdminController extends Controller
 {
@@ -24,6 +25,15 @@ class AdminController extends Controller
     public function adminform()
     {
         return view('admin.admin');
+    }
+
+    public function adminTheme(Request $request)
+    {
+        $theme = Config::where('config', '=', 'theme')->value('id');
+        $table = Config::find($theme);
+        $table->value = $request->input('theme');
+        $table->save();
+        return back();
     }
 
     public function provinsi()
