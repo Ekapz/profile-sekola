@@ -18,6 +18,28 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+    *, *:before, *:after {box-sizing:  border-box !important;}
+
+
+    .row-now {
+        -moz-column-width: 33em;
+       -webkit-column-width: 33em;
+       -moz-column-gap: .5em;
+       -webkit-column-gap: .5em;
+   }
+
+   .panel-now {
+       display: inline-block;
+       margin:  .5em;
+       padding:  0; 
+       width:98%;
+   }
+
+   .img-responsive {
+    margin: 0 auto;
+   }
+</style>
 
 </head>
 <body class="with-navbar">
@@ -60,37 +82,37 @@
 
 
                             <ul class="dropdown-menu">
-                            @if(Auth::user()->role_id == 2)
-                            <li>
-                                <a href="{{ route('admin')}}"> 
-                                Admin Form
-                            </li>
-                            @endif
-
+                                @if(Auth::user()->role_id == 2)
                                 <li>
-                                    <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                    <a href="{{ route('admin')}}"> 
+                                        Admin Form
+                                    </li>
+                                    @endif
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    @endguest
-                </ul>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    @yield('content')
-</div>
+        @yield('content')
+    </div>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
