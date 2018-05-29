@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
+Route::post('cari', 'HomeController@search')->name('cari');
 
 Route::prefix('admin')->group(function () {
 	Route::get('/', 'Auth\AdminController@adminform')->name('admin');

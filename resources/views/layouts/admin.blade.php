@@ -209,6 +209,12 @@ $c_theme = \App\Config::where('config', '=', 'theme')->value('value');
                             <span>Fasilitas</span>
                         </a>
                     </li>
+                    <li class="{{ Request::segment(2) === 'user' ? 'active' : null }}">
+                        <a href="{{route('user')}}">
+                            <i class="material-icons">waves</i>
+                            <span>User</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->

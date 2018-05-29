@@ -36,6 +36,7 @@
                 <th>ID</th>
                 <th>Nama</th>
                 <th>Email</th>
+                <th>Hak Akeses</th>
                 <th>Option</th>
               </tr>
             </thead>            
@@ -43,12 +44,21 @@
               @foreach($users as $r)
               <tr>
                 <td>{{ $r->id }}</td>
-                <td>{{ $r->nama }}</td>
-                <td>{{ $r->email }}</td>                
+                <td>{{ $r->name }}</td>
+                <td>{{ $r->email }}</td>
+                @if($r->role_id == 2)                
+                <td>Admin</td>
+                @elseif ($r->role_id == 1)
+                <td>Guru</td>
+                @elseif ($r->role_id == 0)
+                <td>Siswa</td>
+                @endif
                 <td class="text-center">
+                @if ($r->role_id == 2)
                   <button type="button" class="btn btn-info btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $r->id }}editModal">
                     <i class="material-icons">edit</i>                    
                   </button>
+                  @endif
                   <button type="button" class="btn btn-warning btn-circle waves-effect waves-circle waves-float waves-light" data-toggle="modal" data-target="#{{ $r->id }}deleteModal">
                     <i class="material-icons">delete</i>                    
                   </button>                  
@@ -130,7 +140,7 @@
               <div class="form-group">
                 <label class="form-label">Nama</label>
                 <div class="form-line">
-                  <input type="number" class="form-control" name="nama" value="{{ $user->nama }}" required autofocus />
+                  <input type="text" class="form-control" name="nama" value="{{ $user->name }}" required autofocus />
                 </div>
               </div>
               <div class="form-group"> 
@@ -139,12 +149,14 @@
                   <input type="text" class="form-control" name="email" value="{{ $user->email }}" required />
                 </div>
               </div>
+              @if(Auth::user()->id == $user->id)
               <div class="form-group"> 
                 <label class="form-label">Password</label>
                 <div class="form-line">
                   <input type="password" class="form-control" name="password"/>
                 </div>
               </div>
+              @endif
               <div class="form-group">
                 <p>
                   <b>Role</b>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Sekolah;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function search(Request $request)
+    {
+        $data['sekolahan'] = Sekolah::where('nama', '=', $request->input('cari'))->get();
+        $data['cari'] = $request->input('cari');
+        return view('cari')->with($data);
     }
 
     public function ajaxRequestPost()

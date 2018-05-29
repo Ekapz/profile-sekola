@@ -26,9 +26,9 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+  public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
     }
 
     /**
@@ -40,8 +40,14 @@ class LoginController extends Controller
     {    
         if (Auth::user()->role_id == 2) {
             return '/admin';
-        }
+        }elseif(Auth::user()->role_id == 0) {
+            return '/home';
+        }elseif(Auth::user()->role_id == 1) {
+            return '/home';//blom ada return selain(else) role 2 sama 0 jadi guru login error
 
-        return '/home';
+        //toubleshoot pake ini
+        }
+        //atau
+        // return '/dashboard';
     }
 }
