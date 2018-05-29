@@ -39,7 +39,7 @@ class LoginController extends Controller
     public function redirectPath()
     {    
         if (Auth::user()->role_id == 2) {
-            return '/admin';
+            return '/home';
         }elseif(Auth::user()->role_id == 0) {
             return '/home';
         }elseif(Auth::user()->role_id == 1) {

@@ -110,6 +110,7 @@ $c_theme = \App\Config::where('config', '=', 'theme')->value('value');
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li>
+                                <a href="{{ route('home') }}" >
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" ><i class="material-icons">input</i>Sign Out</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

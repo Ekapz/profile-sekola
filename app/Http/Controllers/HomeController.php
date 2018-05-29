@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Sekolah;
-
 class HomeController extends Controller
 {
     /**
@@ -24,7 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['sekolah'] = Sekolah::all();//pedesaan adalah variable yang akan dipanggil diviewnya
+        return view('home')->with($data);
+    }
+
+     public function readmore($id)
+    {
+        $data['sekolah'] = Sekolah::all();//pedesaan adalah variable yang akan dipanggil diviewnya
+        return view('readmore')->with($data);
     }
 
     public function search(Request $request)

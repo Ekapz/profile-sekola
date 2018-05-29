@@ -57,7 +57,15 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
+
                             <ul class="dropdown-menu">
+                            @if(Auth::user()->role_id == 2)
+                            <li>
+                                <a href="{{ route('admin')}}"> 
+                                Admin Form
+                            </li>
+                            @endif
+
                                 <li>
                                     <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
