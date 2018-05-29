@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('cari');
-        $data['sekolahan'] = Sekolah::where('nama', 'LIKE', '%'.$search.'%', 'OR', 'alamat', 'LIKE', '%'.$search.'%', 'OR', 'kepala_sekolah', 'LIKE', '%'.$search.'%', 'OR', 'nss', 'LIKE', '%'.$search.'%')->get();        
+        $data['sekolahan'] = Sekolah::where('nama', 'LIKE', '%'.$search.'%')->orWhere('alamat', 'LIKE', '%'.$search.'%')->orWhere('kepala_sekolah', 'LIKE', '%'.$search.'%')->orWhere('nss', 'LIKE', '%'.$search.'%')->get();        
         $data['cari'] = $request->input('cari');
         return view('cari')->with($data);
     }
