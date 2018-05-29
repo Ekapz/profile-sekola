@@ -46,7 +46,7 @@
                                     <label>No. Fax : {{ $sekolah->no_fax }}</label><br>
                                     <label>Website : <a href="{{ $sekolah->website }}" target="_blank">{{ $sekolah->website }}</a></label>
                                     <legend>Guru</legend>
-                                    <label>Kepala Sekolah : {{ $sekolah->kepala_r }}</label><br>
+                                    <label>Kepala Sekolah : {{ $sekolah->kepala_sekolah }}</label><br>
                                     <?php
                                     $jumlahguru = App\Guru::where('sekolah_id', '=', $sekolah->id)->count();
                                     ?>
@@ -54,7 +54,7 @@
                                 </b>
                             </div>
                             <div class="panel-footer">
-                                <a href="#" class="btn btn-primary btn-block">Lihat</a>
+                                <a href="{{ url($sekolah->nss.'/sekolah') }}" class="btn btn-primary btn-block">Lihat</a>
                             </div>
                         </div>
                         @endforeach

@@ -36,9 +36,16 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('cari');
-        $data['sekolahan'] = Sekolah::where('nama', 'LIKE', '%'.$search.'%', 'OR', 'alamat', 'LIKE', '%'.$search.'%', 'OR', 'kepala_sekolah', 'LIKE', '%'.$search.'%', 'OR', 'nss', 'LIKE', '%'.$search.'%')->get();
+        $data['sekolahan'] = Sekolah::where('nama', 'LIKE', '%'.$search.'%', 'OR', 'alamat', 'LIKE', '%'.$search.'%', 'OR', 'kepala_sekolah', 'LIKE', '%'.$search.'%', 'OR', 'nss', 'LIKE', '%'.$search.'%')->get();        
         $data['cari'] = $request->input('cari');
         return view('cari')->with($data);
+    }
+
+    public function sekolah($nss)
+    {        
+        $id = Sekolah::where('nss', '=', $nss)->value('id');
+        $data['sekolah'] = Sekolah::find($id);
+        return view('sekolah')->with($data);
     }
 
     public function ajaxRequestPost()

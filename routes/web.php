@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('readmore', 'HomeController@index')->name('home');
+Route::get('{nss}/sekolah', 'HomeController@sekolah')->name('school');
 Route::post('cari', 'HomeController@search')->name('cari');
 
 Route::prefix('admin')->group(function () {
