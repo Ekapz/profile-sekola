@@ -5,6 +5,26 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
+                <div class="panel-heading">Cari Sekolah</div>
+                <div class="panel-body">
+                    <form action="{{ route('cari') }}" method="post">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control input-lg" name="cari" placeholder="Nama Sekolah">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary btn-lg" type="submit">Cari <i class="fa fa-search fa-fw"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
                 <div class="panel-heading">Profile Sekolah</div>
                 <div class="body">
                     <div class="table-responsive">          
@@ -44,18 +64,10 @@
                                         <i class="material-icons">Lihat</i>                    
                                     </button></td>
                                 </tr>
+                                @endforeach
                             </tbody>
-                        </table>
-                        @endforeach
-                        <div class="panel-body">
-
-                            {{ csrf_field() }}
-              <!--    <form action="{{ route('cari') }}" method="post">
-                <label>Cari Sekolah</label>
-                        <input type="text" name="cari" class="form-control">
-                        <br>
-                        <button type="submit" class="btn btn-primary btn-block">Cari <i class="fa fa-search fa-fw"></i></button>
-                    </form> -->
+                        </table>                        
+                    </div>
                 </div>
             </div>
         </div>

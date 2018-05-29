@@ -40,6 +40,9 @@ class SekolahController extends Controller
         $table->no_fax = $request->input('no_fax');//inputan table
         if ($request->hasFile('image')) {
             $image = $request->file('image');
+            // $imagedata = file_get_contents($image);
+            // $base64 = base64_encode($imagedata);
+            // $table->image = $base64;
             $name = str_random().'.'.$image->getClientOriginalExtension();
             $destinationPath = public_path('/uploads');
             $imagePath = $destinationPath. "/".  $name;
@@ -48,8 +51,7 @@ class SekolahController extends Controller
         }
         $table->email = $request->input('email');//inputan table
         $table->website = $request->input('website');//inputan table
-        $table->kepala_sekolah = $request->input('kepala_sekolah');//inputan table
-        
+        $table->kepala_sekolah = $request->input('kepala_sekolah');//inputan table        
         $table->save();//eksekusi data
         Session::flash('message', "Sekolah berhasil ditambahkan.");//session buat alert
         return back();
