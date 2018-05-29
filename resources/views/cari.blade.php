@@ -3,6 +3,28 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if(sizeof($sekolahan)<=0)
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Tidak Ditemukan Hasil Dari Pencarian <b>{{ $cari }}</b></div>
+                <div class="panel-body">
+                    <form action="{{ route('cari') }}" method="post">
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control input-lg" name="cari" placeholder="Cari Sekolah">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary btn-lg" type="submit">Cari <i class="fa fa-search fa-fw"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        @else
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Hasil Pencarian {{ $cari }}</div>
@@ -40,6 +62,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </div>
 @endsection
