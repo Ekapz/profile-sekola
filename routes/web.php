@@ -18,8 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
-Route::get('readmore', 'HomeController@index')->name('home');
-Route::get('{nss}/sekolah', 'HomeController@sekolah')->name('school');
+Route::get('states/get/{id}', 'HomeController@getStates');
 Route::post('cari', 'HomeController@search')->name('cari');
 
 Route::prefix('admin')->group(function () {
@@ -123,3 +122,5 @@ Route::prefix('admin')->group(function () {
 		Route::get('/', 'Auth\UsersController@user')->name('user');
 	});
 });
+
+Route::get('{nss}/sekolah', 'HomeController@sekolah')->name('school');

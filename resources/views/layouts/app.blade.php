@@ -14,10 +14,15 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
-    <!-- Styles -->
+    <!-- Styles -->    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{{ asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+   #loader{
+   visibility:hidden;
+   }
+   </style>
     <style type="text/css">
     *, *:before, *:after {box-sizing:  border-box !important;}
 
@@ -114,5 +119,42 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>    
+    <script>
+       $(document).ready(function() {
+
+        $('select[name="country"]').on('change', function(){
+            var countryId = $(this).val();
+            if(countryId) {
+                $.ajax({
+                    url: '/states/get/'+countryId,
+                    type:"GET",
+                    dataType:"json",
+                    beforeSend: function(){
+                        $('#loader').css("visibility", "visible");
+                    },
+
+                    success:function(data) {
+
+                        $('select[name="state"]').empty();
+
+                        $.each(data, function(key, value){
+
+                            $('select[name="state"]').append('<option value="'+ key +'">' + value + '</option>');
+
+                        });
+                    },
+                    complete: function(){
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            } else {
+                $('select[name="state"]').empty();
+            }
+
+        });
+
+    });
+</script>
 </body>
 </html>
