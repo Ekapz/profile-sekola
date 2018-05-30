@@ -36,7 +36,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control input-lg" name="cari" placeholder="{{ $cari }}">
+                                    <input type="text" class="form-control input-lg" name="cari" value="{{ $cari }}">
                                     <span class="input-group-btn">
                                         <button class="btn btn-primary btn-lg" type="submit">Cari <i class="fa fa-search fa-fw"></i></button>
                                     </span>
